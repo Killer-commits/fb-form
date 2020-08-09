@@ -43,7 +43,7 @@ const Page3 = ({ nextPage }) => {
                         </span>
                     </FormLabel>
                     <RadioGroup aria-label="gender" name="gender1" value={value} onChange={(e) => setValue(e.target.value)}>
-                        <FormControlLabel value="female" control={<Radio style={{ color: green[500] }} color="primary" />} label="Female" />
+                        <FormControlLabel value="female" control={<Radio className={classes.radio}  />} label="Female" />
                         <FormControlLabel value="male" control={<Radio color="primary" />} label="Male" />
                         <FormControlLabel value="other" control={<Radio color="primary" />} label="Other" />
                         <FormControlLabel value="disabled" disabled control={<Radio color="primary" />} label="(Disabled option)" />
