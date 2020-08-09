@@ -38,6 +38,24 @@
   justify-content: center;
   flex-direction: column;
   width: 50%;
+  padding-top: 1px; 
+}
+
+.body-content-big {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 75%;
+  padding-top: 1px; 
+}
+
+.body-content-big-topspace{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 75%;
+  padding-top: 1px; 
+  margin-top: 25px; 
 }
 
 .page-1 {

@@ -25,6 +25,7 @@
 	justify-content: center;
 	flex-direction: column;
 	width: 50%;
+
 }
 
 .page-1{
@@ -110,7 +111,7 @@
 	font-size: 20px;
 	color: white;
 	background-color: teal;
-	border-radius: 5px;
+	border-radius: 0px;
 	margin-top: 20px;
 	text-transform: uppercase;
 }

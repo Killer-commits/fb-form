@@ -14,7 +14,14 @@ export const feedback = atom({
 		rating4: '',
 		rating5: '',
 		rating6: '',
-		rating7: ''
+		rating7: '',
+		rating8: '',
+		induction: '',
+        projectFlow: '',
+        expereince:'',
+        skillsAcquired:'',
+        suggestions:'',
+        feedback:'',
 
     }
 })

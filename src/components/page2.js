@@ -125,10 +125,10 @@ const Page2 = ({ prevPage, nextPage }) => {
 
                 <Grid justify='space-between' container spacing={24}>
                     <IconButton>
-                        <ArrowBackIcon onClick={prevPage} />
+                        <ArrowBackIcon fontSize="large" onClick={prevPage} />
                     </IconButton>
                     <IconButton>
-                        <ArrowForwardIcon onClick={() => { console.log(fb); nextPage() }} />
+                        <ArrowForwardIcon fontSize="large" onClick={() => { console.log(fb); nextPage() }} />
                     </IconButton>
                 </Grid>
 
