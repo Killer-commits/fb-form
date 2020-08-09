@@ -10,27 +10,7 @@ import '../assets/styles/ReviewForm.css'
 
 class ReviewForm extends Component {
 
-	state = {
-		currentPage: 1,
-		name: '',
-		mobile: '',
-		email: '',
-		volunteerPeriod: '',
-		project: '',
-		userState: '',
-		understandingEase: '',
-		expereince: '',
-		skillsAcquired: '',
-		feedback: '',
-		suggestions: '',
-		rating1: '',
-		rating2: '',
-		rating3: '',
-		rating4: '',
-		rating5: '',
-		rating6: '',
-		rating7: ''
-	}
+	state = { currentPage: 1	}
 
 	handleNext = () => {
 		const { currentPage } = this.state;
@@ -40,37 +20,11 @@ class ReviewForm extends Component {
 	}
 
 	render() {
-		const { currentPage,
-			name,
-			mobile,
-			email,
-			volunteerPeriod,
-			project,
-			userState,
-			understandingEase,
-			suggestions,
-			feedback,
-			expereince,
-			skillsAcquired,
-			rating1,
-			rating2,
-			rating3,
-			rating4,
-			rating5,
-			rating6,
-			rating7 } = this.state;
+		const { currentPage } = this.state;
 
 		return (
 			<div className='app-div'>
-				{/* {
-					currentPage === 1 ?
-						<div className='content-area page-1' >
-							<div className='start-button-row'>
-								<div className='start-Button' onClick={() => this.setState({ currentPage: 2 })}> Start Review </div>
-							</div>
-						</div> : null
-				} */}
-
+				
                 {
 					currentPage === 1 ?
 					<Page1 nextPage={() => this.setState({ currentPage: 2 })}/> : null

@@ -31,6 +31,16 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  overflow-y: scroll;
+}
+
+.content-area2 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
 }
 
 .body-content {
@@ -38,7 +48,7 @@
   justify-content: center;
   flex-direction: column;
   width: 50%;
-  padding-top: 1px; 
+  padding-top: 1px;  
 }
 
 .body-content-big {
@@ -61,7 +71,8 @@
 .page-1 {
   background-image: url('../images/Page-1.jpg');
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
+  background-position: center;
   /* object-fit: cover;
   max-width: 100%;
   height: 100%; */
@@ -71,15 +82,18 @@
   background-image: url('../images/page-2.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
   /* object-fit: cover;
   max-width: 100%;
   height: 100%; */
 }
 
 .page-3 {
-  background-image: url('../images/page-3.jpg');
+  background-image: url('../images/page-3.png');
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
+  background-position: center;
+  background-color: #8497b0;
   /* object-fit: cover;
   max-width: 100%;
   height: 100%; */
@@ -88,7 +102,10 @@
 .page-4 {
   background-image: url('../images/page-4.jpg');
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
+  background-position: center;
+  background-color: #ffd553;
+
   /* object-fit: cover;
   max-width: 100%;
   height: 100%; */
@@ -97,16 +114,20 @@
 .page-5 {
   background-image: url('../images/page-5.jpg');
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
+  background-position: center;
+  background-color: #184f52;
   /* object-fit: cover;
   max-width: 100%;
   height: 100%; */
 }
 
 .page-6 {
-  background-image: url('../images/page-6.jpg');
+  background-image: url('../images/page-7.png');
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
+  background-color: #aae0ea;
+  background-position: center;
   /* object-fit: cover;
   max-width: 100%;
   height: 100%; */
@@ -212,6 +233,13 @@
 }
 
 .start-button-row {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.submit-button{
   width: 50%;
   display: flex;
   align-items: center;

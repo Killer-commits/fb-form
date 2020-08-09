@@ -9,6 +9,7 @@ import Grid from '@material-ui/core/Grid';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
 import { useRecoilState } from 'recoil';
 import { feedback } from './fbAtom';
 
@@ -21,9 +22,16 @@ const useStyles = makeStyles((theme) => ({
     formControl: {
         margin: theme.spacing(1),
         minWidth: 120,
+        fontWeight: "bold",
     },
     textField: {
         marginTop: theme.spacing(2),
+        fontWeight: "bold",
+    },
+    title:{
+        margin: theme.spacing(2),
+        marginTop: theme.spacing(6),
+        color: "black",
     },
 }));
 
@@ -31,6 +39,7 @@ const Page2 = ({ prevPage, nextPage }) => {
     const classes = useStyles();
     const [openDuration, setopenDuration] = React.useState(false);
     const [openProject, setOpenProject] = React.useState(false);
+
     const [fb, setFb] = useRecoilState(feedback);
     return (
         <div className='content-area page-2' >
@@ -86,14 +95,6 @@ const Page2 = ({ prevPage, nextPage }) => {
                         <MenuItem value={'>0.6'}>>6 Months</MenuItem>
                         <MenuItem value={'>1'}>>1 Year</MenuItem>
                         <MenuItem value={'>2'}>>2 Years</MenuItem>
-                        <MenuItem value={'>3'}>>3 Years</MenuItem>
-                        <MenuItem value={'>4'}>>4 Years</MenuItem>
-                        <MenuItem value={'>5'}>>5 Years</MenuItem>
-                        <MenuItem value={'>6'}>>6 Years</MenuItem>
-                        <MenuItem value={'>7'}>>7 Years</MenuItem>
-                        <MenuItem value={'>8'}>>8 Years</MenuItem>
-                        <MenuItem value={'>9'}>>9 Years</MenuItem>
-                        <MenuItem value={'>10'}>>10 Years</MenuItem>
                     </Select>
                 </FormControl>
 
@@ -112,7 +113,7 @@ const Page2 = ({ prevPage, nextPage }) => {
                             <em>None</em>
                         </MenuItem>
                         <MenuItem value={"Artoons"}>Artoons</MenuItem>
-                        <MenuItem value={"De-Step"}>De-Step</MenuItem>
+                        <MenuItem value={"De-Step"}>deStep</MenuItem>
                         <MenuItem value={"Kanini"}>Kanini</MenuItem>
                         <MenuItem value={"Lakshya"}>Lakshya</MenuItem>
                         <MenuItem value={"LEM"}>LEM</MenuItem>

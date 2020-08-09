@@ -11,6 +11,7 @@ import { makeStyles } from '@material-ui/core/styles';
 // import TextField from '@material-ui/core/TextField';
 import withStyles from "@material-ui/core/styles/withStyles";
 import TextFieldMui from "@material-ui/core/TextField";
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
     white: {
@@ -73,8 +74,8 @@ const Page6 = ({ prevPage, nextPage }) => {
                         label="What have you enjoyed the most as a Bhumi volunteer?"
                         id="outlined-size-normal"
                         defaultValue=""
-                        value={fb.expereince}
-                        onChange={(e) => setFb({ ...fb, expereince: e.target.value })}
+                        value={fb.experience}
+                        onChange={(e) => setFb({ ...fb, experience: e.target.value })}
                         placeholder='Enter here'
                         variant="outlined"
                         className= {classes.white }
@@ -110,7 +111,7 @@ const Page6 = ({ prevPage, nextPage }) => {
                         variant="outlined"
                         className= {classes.white }
                 />
-                {/* <input type='text' className='input-field' value={fb.expereince} onChange={(e) => setFb({...fb, expereince: e.target.value }) } placeholder='What have you enjoyed the most as a Bhumi volunteer?' /> */}
+                {/* <input type='text' className='input-field' value={fb.experience} onChange={(e) => setFb({...fb, experience: e.target.value }) } placeholder='What have you enjoyed the most as a Bhumi volunteer?' /> */}
                 {/* <input type='text' className='input-field' value={fb.skillsAcquired} onChange={(e) => setFb({...fb, skillsAcquired: e.target.value }) } placeholder='Mention any 2 skills acquired/honed during your volunteering journey?' /> */}
                 {/* <input type='text' className='input-field' value={fb.suggestions} onChange={(e) => setFb({...fb, suggestions: e.target.value }) } placeholder='What could be improved to make your volunteering experience more enjoyable and fruitful?' /> */}
                 {/* <input type='text' className='input-field' value={fb.feedback} onChange={(e) => setFb({...fb, feedback: e.target.value }) } placeholder='Is there anything else you would like us to know about?' /> */}
@@ -120,9 +121,16 @@ const Page6 = ({ prevPage, nextPage }) => {
                         <IconButton>
                             <ArrowBackIcon fontSize="large"   onClick={prevPage} />
                         </IconButton>
-                        <IconButton>
-                            <ArrowForwardIcon fontSize="large"   onClick={() => { console.log(fb); nextPage() }} />
-                        </IconButton>
+                        <Button  
+                          style={{
+                            borderRadius: 35,
+                            backgroundColor: "#21b6ae",
+                            padding: "18px 36px",
+                            fontSize: "18px"
+                          }}
+                          color="primary"  
+                          onClick={nextPage}
+                          > Submit </Button>
                 </Grid>
             </div>
         </div>

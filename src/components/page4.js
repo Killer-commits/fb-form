@@ -21,15 +21,15 @@ import Select from '@material-ui/core/Select';
 const useStyles = makeStyles((theme) => ({
     button: {
         display: 'block',
-        marginTop: theme.spacing(2),
+        marginTop: theme.spacing(1),
     },
 
     textField: {
-        marginTop: theme.spacing(2),
+        marginTop: theme.spacing(1),
         color: "white",
     },
     title:{
-        margin: theme.spacing(2),
+        margin: theme.spacing(1),
         color: "white",
     },
     whiteText:{
@@ -112,10 +112,100 @@ const Page4 = ({ prevPage, nextPage}) => {
     const [fb, setFb] = useRecoilState(feedback);
     const [openInduction, setOpenInduction] = React.useState(false);
     const [openProjectFlow, setOpenProjectFlow] = React.useState(false);
-
+    const [openCenterClass, setOpenCenterClass] = React.useState(false);
+    const [openPrep, setOpenPrep] = React.useState(false);
+    const [openBonding, setOpenBonding] = React.useState(false);
     return (
-        <div className='content-area page-4 ' >
-            <div className='body-content-big black-over'>
+        <div className='content-area2 page-4 ' >
+            <div className='body-content-big-topspace black-over'>
+                <Typography  className={classes.title}   variant="headline" component="h3">How are your current volunteering hours split up, in a typical week?</Typography>
+
+                <FormControl className={classes.formControl}>
+                    <InputLabel className={classes.whiteText} id="demo-controlled-open-select-label">Duration spent for Center Class  -Select for options here</InputLabel>
+                    <Select
+                        
+                        labelId="demo-controlled-open-select-label"
+                        id="demo-controlled-open-select"
+                        open={openCenterClass}
+                        onClose={() => setOpenCenterClass(false)}
+                        onOpen={() => setOpenCenterClass(true)}
+                        value={fb.classDuration}
+                        onChange={(e) => setFb({ ...fb, classDuration: e.target.value })}
+                        className={classes.select}
+                        inputProps={{
+                            classes: {
+                                icon: classes.selectIcon,
+                            },
+                        }}
+                    >
+                        <MenuItem className={classes.whiteText} value="">
+                            <em>None</em>
+                        </MenuItem>
+                        <MenuItem value={'15-30 mins'}>15-30 mins</MenuItem>
+                        <MenuItem value={'30 mins -1 hr'}>30 mins -1 hr</MenuItem>
+                        <MenuItem value={'1-2 hrs'}>1-2 hrs</MenuItem>
+                        <MenuItem value={'>2hrs'}>>2hrs</MenuItem>
+                        
+                    </Select>
+                </FormControl>
+                <FormControl className={classes.formControl}>
+                    <InputLabel className={classes.whiteText} id="demo-controlled-open-select-label">Duration spent for Content and Class preparation  -Select for options here</InputLabel>
+                    <Select
+                        
+                        labelId="demo-controlled-open-select-label"
+                        id="demo-controlled-open-select"
+                        open={openPrep}
+                        onClose={() => setOpenPrep(false)}
+                        onOpen={() => setOpenPrep(true)}
+                        value={fb.prepDuration}
+                        onChange={(e) => setFb({ ...fb, prepDuration: e.target.value })}
+                        className={classes.select}
+                        inputProps={{
+                            classes: {
+                                icon: classes.selectIcon,
+                            },
+                        }}
+                    >
+                        <MenuItem className={classes.whiteText} value="">
+                            <em>None</em>
+                        </MenuItem>
+                        <MenuItem value={'15-30 mins'}>15-30 mins</MenuItem>
+                        <MenuItem value={'30 mins -1 hr'}>30 mins -1 hr</MenuItem>
+                        <MenuItem value={'1-2 hrs'}>1-2 hrs</MenuItem>
+                        <MenuItem value={'>2hrs'}>>2hrs</MenuItem>
+                        
+                    </Select>
+                </FormControl>
+                <FormControl className={classes.formControl}>
+                    <InputLabel className={classes.whiteText} id="demo-controlled-open-select-label">Duration spent for Volunteer bonding activities  -Select for options here</InputLabel>
+                    <Select
+                        
+                        labelId="demo-controlled-open-select-label"
+                        id="demo-controlled-open-select"
+                        open={openBonding}
+                        onClose={() => setOpenBonding(false)}
+                        onOpen={() => setOpenBonding(true)}
+                        value={fb.bondDuration}
+                        onChange={(e) => setFb({ ...fb, bondDuration: e.target.value })}
+                        className={classes.select}
+                        inputProps={{
+                            classes: {
+                                icon: classes.selectIcon,
+                            },
+                        }}
+                    >
+                        <MenuItem className={classes.whiteText} value="">
+                            <em>None</em>
+                        </MenuItem>
+                        <MenuItem value={'15-30 mins'}>15-30 mins</MenuItem>
+                        <MenuItem value={'30 mins -1 hr'}>30 mins -1 hr</MenuItem>
+                        <MenuItem value={'1-2 hrs'}>1-2 hrs</MenuItem>
+                        <MenuItem value={'>2hrs'}>>2hrs</MenuItem>
+                        
+                    </Select>
+                </FormControl>
+            </div>
+            <div className='body-content-big-topspace black-over'>
                 <Typography  className={classes.title}   variant="headline" component="h3">Did the leadership teams create enough opportunities for you to volunteer ? </Typography>
                 
                 <FormControl className={classes.formControl} component="fieldset">

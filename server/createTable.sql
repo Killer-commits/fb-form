@@ -1,0 +1,20 @@
+CREATE TABLE `fb_form` (
+	`name`	TEXT NOT NULL UNIQUE,
+	`mobile`	TEXT NOT NULL UNIQUE,
+	`email`	TEXT NOT NULL UNIQUE,
+	`duration`	TEXT NOT NULL,
+	`project`	TEXT NOT NULL UNIQUE,
+	`rating1`	TEXT NOT NULL,
+	`rating2`	TEXT NOT NULL,
+	`rating3`	TEXT NOT NULL,
+	`rating4`	TEXT NOT NULL,
+	`rating5`	TEXT NOT NULL,
+	`rating6`	TEXT NOT NULL,
+	`rating7`	TEXT NOT NULL,
+	`rating8`	TEXT NOT NULL,
+	`induction`	TEXT NOT NULL,
+	`projectFlow`	TEXT NOT NULL,
+	`skillsAcquired`	TEXT NOT NULL,
+	`suggestions`	TEXT NOT NULL,
+	`feedback`	TEXT NOT NULL
+);
