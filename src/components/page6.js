@@ -103,6 +103,7 @@ const Page6 = ({ prevPage, nextPage }) => {
           if( err.response ){
             if(err.response.data.includes('UNIQUE')){
               alert('You have already filled')
+              return 
             }
           }
           alert('Something went wrong , Please try again later');
