@@ -5,7 +5,7 @@ After=network.target
 [Service]
 User=ubuntu
 WorkingDirectory=/home/ubuntu/fb-form/server
-ExecStart= /usr/bin/gunicorn3  -b 127.0.0.1:5000  -w 4  --threads 12  server:app
+ExecStart= /usr/bin/gunicorn3  -b 127.0.0.1:5000  -w 4  --threads 12  app:app
 #ExecStart=  /usr/local/bin/uvicorn  --host 127.0.0.1 --port 5000  --workers  4  server:app
 Restart=always
 
