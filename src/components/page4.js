@@ -151,7 +151,6 @@ const Page4 = ({ prevPage, nextPage}) => {
     const classes = useStyles();
     const [fb, setFb] = useRecoilState(feedback);
     const [openInduction, setOpenInduction] = React.useState(false);
-    const [openProjectFlow, setOpenProjectFlow] = React.useState(false);
     const [openCenterClass, setOpenCenterClass] = React.useState(false);
     const [openPrep, setOpenPrep] = React.useState(false);
     const [openBonding, setOpenBonding] = React.useState(false);
@@ -162,7 +161,7 @@ const Page4 = ({ prevPage, nextPage}) => {
     const [rating7Hover, setRating7Hover] = useState(-1)
 
     const ValidationTheFb = () => {
-        if ((fb.rating6 === -1 ) || (fb.rating7 === -1 ) || (fb.classDuration === null ) || (fb.prepDuration === null ) || (fb.bondDuration === null ) || (fb.induction === null ) || (fb.projectFlow === null )   || (fb.projectFlow === '' )  || (fb.induction === '' )){
+        if ((fb.rating6 === -1 ) || (fb.rating7 === -1 ) || (fb.classDuration === null ) || (fb.prepDuration === null ) || (fb.bondDuration === null ) || (fb.induction === null )  || (fb.induction === '' )){
             return 'Please fill everything :-)'
         }
         return true
@@ -356,38 +355,7 @@ const Page4 = ({ prevPage, nextPage}) => {
                     </FormControl>
             </div>
             
-            <div className='body-content-big-topspace black-over'>
-                <Typography  align="center"  className={classes.title}   variant="headline" component="h3">Indicate the ease of understanding the project flow (in terms of project’s vision, goals, timelines, syllabus, assessments for kids, content delivery, knowing the POCs) </Typography>
-
-                <FormControl className={classes.formControl}>
-                        <InputLabel className={classes.whiteText} id="demo-controlled-open-select-label">Select for options here</InputLabel>
-                        <Select
-                            
-                            labelId="demo-controlled-open-select-label"
-                            id="demo-controlled-open-select"
-                            open={openProjectFlow}
-                            onClose={() => setOpenProjectFlow(false)}
-                            onOpen={() => setOpenProjectFlow(true)}
-                            value={fb.projectFlow}
-                            onChange={(e) => setFb({ ...fb, projectFlow: e.target.value })}
-                            className={classes.select}
-                            inputProps={{
-                                classes: {
-                                    icon: classes.selectIcon,
-                                },
-                            }}
-                        >
-                            {/* <MenuItem  value="">
-                                <em>None</em>
-                            </MenuItem> */}
-                            <MenuItem value={'Extremely easy'}> Extremely easy  </MenuItem>
-                            <MenuItem value={'Quite Easy'}> Quite Easy </MenuItem>
-                            <MenuItem value={'Quite difficult'}> Quite difficult </MenuItem>
-                            <MenuItem value={'Extremely difficult'}> Extremely difficult     </MenuItem>
-                            
-                        </Select>
-                    </FormControl>
-            </div>
+            
             <div className='body-content-big '> 
                 <Grid justify='space-between' container spacing={24}>
                         <IconButton>

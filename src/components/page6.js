@@ -61,9 +61,13 @@ const Page6 = ({ prevPage, nextPage }) => {
   const classes = useStyles();
   const [fb, setFb] = useRecoilState(feedback);
   const ValidationTheFb = () => {
-    if ((fb.feedback.length < 4) || (fb.suggestions.length < 4) || (fb.experience.length < 4) || (fb.skillsAcquired.length < null)) {
-      return 'Please write few words in everything :-)'
+    if ((fb.feedback === null) || (fb.suggestions === null) || (fb.experience === null) || (fb.skillsAcquired === null)) {
+      return 'Please write few words for the all questions :-)'
     }
+    if ((fb.feedback.length < 4) || (fb.suggestions.length < 4) || (fb.experience.length < 4) || (fb.skillsAcquired.length < 4)) {
+      return 'Please write few words for the all questions :-)'
+    }
+    
     return true
   }
   const [loading, setLoading] = useRecoilState(loadingAtom)
@@ -228,9 +232,9 @@ const Page6 = ({ prevPage, nextPage }) => {
           <Button
             style={{
               borderRadius: 10,
-              backgroundColor: "#21b6ae",
+              backgroundColor: "#BBBBBB",
               padding: "18px 36px",
-              fontSize: "24px",
+              fontSize: "20px",
               fontWeight: "bold"
 
             }}
