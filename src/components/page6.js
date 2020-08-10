@@ -87,7 +87,11 @@ const Page6 = ({ prevPage, nextPage }) => {
           if (res.status === 200) {
               
           } else if(res.status === 401) {
+<<<<<<< HEAD
               console.log(res)
+=======
+              console.log(res.data)
+>>>>>>> e4977bd56ee8cdba352b78eb0d3356780c53a5cb
               if (res.data.includes('UNIQUE')) {
                 alert('You have already filled')
               } else {
