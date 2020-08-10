@@ -100,8 +100,8 @@ const Page6 = ({ prevPage, nextPage }) => {
         err => {
           setLoading(false)
           console.log(err)
-          if( error.response ){
-            console.log(error.response.data); // => the response payload 
+          if( err.response ){
+            console.log(err.response.data); // => the response payload 
           }
           alert('Something went wrong , Please try again later');
         }
