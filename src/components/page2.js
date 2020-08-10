@@ -26,6 +26,10 @@ const useStyles = makeStyles((theme) => ({
     onlyWhite: {
         color: 'white',
     },
+    onlyWhite1: {
+        color: 'white',
+        marginTop : "-15px"
+    },
     formControl: {
         margin: theme.spacing(2),
         minWidth: 120,
@@ -222,7 +226,7 @@ const Page2 = ({ prevPage, nextPage }) => {
                 />
                 <FormControl className={classes.formControl}>
                     <InputLabel 
-                        className={classes.onlyWhite} 
+                        className={classes.onlyWhite1} 
                         id="demo-controlled-open-select-label"
                     >
                         How long have you been volunteering with Bhumi?
