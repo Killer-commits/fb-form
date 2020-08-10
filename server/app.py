@@ -38,9 +38,9 @@ datasrc_col = 7
 insert_form_query = ''' 
 insert into `fb_form` (name,mobile,email,duration,project,classDuration,prepDuration,
                     bondDuration,rating1,rating2,rating3,rating4,rating5,
-                    rating6,rating7,rating8,induction,projectFlow,
+                    rating6,rating7,rating8,rating9,rating10,rating11,rating12,induction,projectFlow,
                     experience,skillsAcquired,suggestions,feedback,insertedTimeStamp) 
-values(? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,?,?,?,?,? )
+values(? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,?,?,?,?,?,?,?,?,? )
 '''
 
 # name
@@ -88,6 +88,10 @@ def getUsers():
         rating6  = request.json["rating6"]
         rating7  = request.json["rating7"]
         rating8  = request.json["rating8"]
+        rating9  = request.json["rating9"]
+        rating10  = request.json["rating10"]
+        rating11  = request.json["rating11"]
+        rating12  = request.json["rating12"]
         induction  = request.json["induction"]
         projectFlow  = request.json["projectFlow"]
         experience  = request.json["experience"]
@@ -96,13 +100,13 @@ def getUsers():
         feedback  = request.json["feedback"]
         insertedTimeStamp = datetime.now().strftime("%d-%m-%Y, %H:%M:%S.%f")
 
-        row = [insertedTimeStamp,name,mobile,email,duration,project,rating1,rating2,rating3,rating4,rating5,rating6,rating7,rating8,induction,projectFlow,experience,skillsAcquired,suggestions,feedback]
+        row = [insertedTimeStamp,name,mobile,email,duration,project,rating1,rating2,rating3,rating4,rating5,rating6,rating7,rating8,rating9,rating10,rating11,rating12,induction,projectFlow,experience,skillsAcquired,suggestions,feedback]
         gsheet1.insert_row(row, 2) 
 
         conn = sqlite3.connect("./fbform.db")
         cur = conn.cursor()
-        print(insert_form_query, (name,mobile,email,duration,project,classDuration,prepDuration,bondDuration,rating1,rating2,rating3,rating4,rating5,rating6,rating7,rating8,induction,projectFlow,experience,skillsAcquired,suggestions,feedback,insertedTimeStamp,))
-        data = cur.execute(insert_form_query, (name,mobile,email,duration,project,classDuration,prepDuration,bondDuration,rating1,rating2,rating3,rating4,rating5,rating6,rating7,rating8,induction,projectFlow,experience,skillsAcquired,suggestions,feedback,insertedTimeStamp,))
+        print(insert_form_query, (name,mobile,email,duration,project,classDuration,prepDuration,bondDuration,rating1,rating2,rating3,rating4,rating5,rating6,rating7,rating8,rating9,rating10,rating11,rating12,induction,projectFlow,experience,skillsAcquired,suggestions,feedback,insertedTimeStamp,))
+        data = cur.execute(insert_form_query, (name,mobile,email,duration,project,classDuration,prepDuration,bondDuration,rating1,rating2,rating3,rating4,rating5,rating6,rating7,rating8,rating9,rating10,rating11,rating12,induction,projectFlow,experience,skillsAcquired,suggestions,feedback,insertedTimeStamp,))
         conn.commit()
         gsheet2.insert_row(row, 2) 
         return jsonify("Hello"), 200

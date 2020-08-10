@@ -229,11 +229,11 @@ const Page3 = ({ prevPage, nextPage }) => {
                    spacing={0}
                 >
                     <Grid justify="center"  item>
-                        <StyledRating
+                        <StyledRating2
                             max={6}
                             name="rating3"
                             precision={1}
-                            icon={<FavoriteIcon fontSize="large" color='white' />}
+                            icon={<StarIcon fontSize="large" color='white' />}
                             value={fb.rating3}
                             onChange={(event, newValue) => {
                                 // setRating3(newValue);
@@ -261,11 +261,11 @@ const Page3 = ({ prevPage, nextPage }) => {
                     spacing={0}
                 >
                     <Grid justify="center"  item>
-                        <StyledRating
+                        <StyledRating2
                             max={6}
                             name="rating4"
                             precision={1}
-                            icon={<FavoriteIcon fontSize="large" color='white' />}
+                            icon={<StarIcon fontSize="large" color='white' />}
                             value={fb.rating4}
                             onChange={(event, newValue) => {
                                 // setRating4(newValue);
@@ -290,11 +290,11 @@ const Page3 = ({ prevPage, nextPage }) => {
                     spacing={0}
                 >
                     <Grid item>
-                        <StyledRating
+                        <StyledRating2
                             max={6}
                             name="rating5"
                             precision={1}
-                            icon={<FavoriteIcon fontSize="large" color='white' />}
+                            icon={<StarIcon fontSize="large" color='white' />}
                             value={fb.rating5}
                             onChange={(event, newValue) => {
                                 // setRating5(newValue);

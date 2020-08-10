@@ -1,238 +1,416 @@
-import React from 'react';
+import React, {useState} from 'react';
+import clsx from 'clsx';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import { useRecoilState } from 'recoil';
-import { feedback, loadingAtom } from './fbAtom';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import withStyles from "@material-ui/core/styles/withStyles";
-import TextFieldMui from "@material-ui/core/TextField";
-import Button from '@material-ui/core/Button';
-import axios from 'axios'
+import { feedback } from './fbAtom';
+import Typography from '@material-ui/core/Typography';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import Box from '@material-ui/core/Box';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import Rating from '@material-ui/lab/Rating';
+import StarIcon from '@material-ui/icons/Star';
+
+
 const useStyles = makeStyles((theme) => ({
-  white: {
-    margin: theme.spacing(2),
-    color: 'white',
-  },
-  onlyWhite: {
-    color: 'white',
-  },
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  cssLabel: {
-    color: 'white',
-    "&$cssFocused": {
-      color: "white"
+    button: {
+        display: 'block',
+        marginTop: theme.spacing(1),
     },
-  },
+    onlyWhite:{
+        color: "white",
+    },
 
-
-  cssOutlinedInput: {
-    '&$cssFocused $notchedOutline': {
-      // borderColor: `${theme.palette.primary.main} !important`,
-      borderColor: `white !important`,
-    }
-  },
-
-  cssFocused: {},
-  notchedOutline: {
-    borderWidth: '2px',
-    borderColor: 'white !important'
-  },
-
-}));
-
-
-
-
-
-const Page6 = ({ prevPage, nextPage }) => {
-  const classes = useStyles();
-  const [fb, setFb] = useRecoilState(feedback);
-  const ValidationTheFb = () => {
-    if ((fb.feedback.length < 4) || (fb.suggestions.length < 4) || (fb.experience.length < 4) || (fb.skillsAcquired.length < null)) {
-      return 'Please write few words in everything :-)'
-    }
-    return true
-  }
-  const [loading, setLoading] = useRecoilState(loadingAtom)
-  const PostFb = () => {
-
-    setLoading(true)
-    let  data = JSON.stringify(fb)
-    let config = {
-      method: 'post',
-      url: window.origin + '/api/post/form',
-      // url: 'http://localhost:5000' + '/api/post/form',
-      headers: { 
-        'Content-Type': 'application/json'
+    textField: {
+        marginTop: theme.spacing(1),
+        color: "white",
+    },
+    title:{
+        margin: theme.spacing(1),
+        color: "white",
+    },
+    whiteText:{
+        color: "white",
+    },
+    formControl: {
+        margin: theme.spacing(1),
+        minWidth: 120,
+        color: 'white',
+    },
+    root: {
+      '&:hover': {
+        backgroundColor: 'transparent',
       },
-      data : data
-    };
-    axios(config)
-      .then(
-        res => {
-          setLoading(false)
-          if (res.status === 200) {
-              
-          } else if(res.status === 401) {
-              alert('Something went wrong , Please try again later')
-          } else {
-            alert('Something went wrong , Please try again later');
-          }
+    },
+    select: {
+        '&:before': {
+            borderColor: 'white',
         },
-        err => {
-          setLoading(false)
-          alert('Something went wrong , Please try again later');
+        '&:after': {
+            borderColor: 'white',
+        },
+        color: "white",
+    },
+    selectIcon: {
+        fill: 'white',
+    },
+    icon: {
+      borderRadius: '50%',
+      width: 16,
+      height: 16,
+      boxShadow: 'inset 0 0 0 1px rgba(16,22,26,.2), inset 0 -1px 0 rgba(16,22,26,.1)',
+      backgroundColor: '#f5f8fa',
+      backgroundImage: 'linear-gradient(180deg,hsla(0,0%,100%,.8),hsla(0,0%,100%,0))',
+      '$root.Mui-focusVisible &': {
+        outline: '2px auto rgba(19,124,189,.6)',
+        outlineOffset: 2,
+      },
+      'input:hover ~ &': {
+        backgroundColor: '#ebf1f5',
+      },
+      'input:disabled ~ &': {
+        boxShadow: 'none',
+        background: 'rgba(206,217,224,.5)',
+      },
+    },
+    checkedIcon: {
+      backgroundColor: '#137cbd',
+      backgroundImage: 'linear-gradient(180deg,hsla(0,0%,100%,.1),hsla(0,0%,100%,0))',
+      '&:before': {
+        display: 'block',
+        width: 16,
+        height: 16,
+        backgroundImage: 'radial-gradient(#fff,#fff 28%,transparent 32%)',
+        content: '""',
+      },
+      'input:hover ~ &': {
+        backgroundColor: '#106ba3',
+      },
+    },
+}));
+  
+// Inspired by blueprintjs
+function StyledRadio(props) {
+    const classes = useStyles();
+  
+    return (
+      <Radio
+        className={classes.root}
+        disableRipple
+        color="default"
+        checkedIcon={<span className={clsx(classes.icon, classes.checkedIcon)} />}
+        icon={<span className={classes.icon} />}
+        {...props}
+      />
+    ); 
+}  
+
+const StyledRating = withStyles({
+    icon:{
+        color : '#333333'
+    },
+    iconFilled: {
+      color: '#ff6d75',
+    },
+    iconHover: {
+      color: '#ff3d47',
+    },
+  })(Rating);
+
+  const StyledRating2 = withStyles({
+    icon:{
+        color : '#333333'
+    },
+    iconFilled: {
+      color: '#FFDF00',
+    },
+    iconHover: {
+      color: '#FFDF00',
+    },
+  })(Rating);
+
+  const labels = {
+    1: 'Strongly Disagree',
+    2: 'Disagree',
+    3: 'Somewhat Disagree',
+    4: 'Somewhat Agree',
+    5: 'Agree',
+    6: 'Strongly Agree',
+  };
+const Page4 = ({ prevPage, nextPage}) => {
+    const classes = useStyles();
+    const [fb, setFb] = useRecoilState(feedback);
+    const [openInduction, setOpenInduction] = React.useState(false);
+    const [openProjectFlow, setOpenProjectFlow] = React.useState(false);
+    const [openCenterClass, setOpenCenterClass] = React.useState(false);
+    const [openPrep, setOpenPrep] = React.useState(false);
+    const [openBonding, setOpenBonding] = React.useState(false);
+
+    const [rating6, setRating6] = useState(-1)
+    const [rating6Hover, setRating6Hover] = useState(-1)
+    const [rating7, setRating7] = useState(-1)
+    const [rating7Hover, setRating7Hover] = useState(-1)
+
+    const ValidationTheFb = () => {
+        if ((fb.rating6 === -1 ) || (fb.rating7 === -1 ) || (fb.classDuration === null ) || (fb.prepDuration === null ) || (fb.bondDuration === null ) || (fb.induction === null ) || (fb.projectFlow === null )   || (fb.projectFlow === '' )  || (fb.induction === '' )){
+            return 'Please fill everything :-)'
         }
-      )
-  }
-  return (
-    <div className='content-area page-5' >
-      <div className='body-content-page5 black-over'>
-        <TextField
-          label="What have you enjoyed the most as a Bhumi volunteer?"
-          id="outlined-multiline-static"
-          defaultValue=""
-          value={fb.experience}
-          onChange={(e) => setFb({ ...fb, experience: e.target.value })}
-          placeholder='Enter here'
-          variant="outlined"
-          className={classes.white}
-          rows={4}
-          multiline
-          InputLabelProps={{
-            classes: {
-              root: classes.cssLabel,
-              focused: classes.cssFocused,
-            },
+        return true
+    }
+    return (
 
-          }}
-          InputProps={{
-            classes: {
-              root: classes.cssOutlinedInput,
-              focused: classes.cssFocused,
-              notchedOutline: classes.notchedOutline,
-            },
-            className: classes.onlyWhite
-          }}
-        />
-        <TextField
-          label="Mention any 2 skills acquired/honed during your volunteering journey?"
-          id="outlined-multiline-static"
-          defaultValue=""
-          value={fb.skillsAcquired}
-          onChange={(e) => setFb({ ...fb, skillsAcquired: e.target.value })}
-          placeholder='Enter here'
-          variant="outlined"
-          className={classes.white}
-          rows={4}
-          multiline
-          InputLabelProps={{
-            classes: {
-              root: classes.cssLabel,
-              focused: classes.cssFocused,
-            },
-          }}
-          InputProps={{
-            classes: {
-              root: classes.cssOutlinedInput,
-              focused: classes.cssFocused,
-              notchedOutline: classes.notchedOutline,
-            },
-            className: classes.onlyWhite
-          }}
-        />
+            
+        <div className='content-area2 page-4 ' >
+            <div className='body-content-big-topspace black-over'>
+                <Typography  align="center"  className={classes.title}   variant="headline" component="h3">Did the leadership teams create enough opportunities for you to volunteer ? </Typography>
+            
+                <Typography  align="center" ml={3} className={classes.title}  variant="subheading" component="h4">On a project level </Typography>
+                <Grid
+                    direction='column'
+                    justify="center" // Add it here :)
+                    container 
+                    alignItems="center"
+                    spacing={0}
+                >
+                    <Grid item>
+                            <StyledRating2
+                            max={6}
+                            name="rating6"
+                            precision={1}
+                            icon={<StarIcon fontSize="large" color='white' />}
+                            value={fb.rating6}
+                            onChange={(event, newValue) => {
+                                // setRating6(newValue);
+                                setFb( { ...fb, rating6 : newValue } )
+                            }}
+                            onChangeActive={(event, newHover) => {
+                                setRating6Hover(newHover);
+                            }}
+                        />
+                    </Grid>
+                    <Grid item>
+                        {fb.rating6 !== null && <Box className={classes.onlyWhite} >{labels[rating6Hover !== -1 ? rating6Hover : fb.rating6]}</Box>}
+                    </Grid>
+                </Grid>
 
-        <TextField
-          label="What could be improved to make your volunteering experience more enjoyable and fruitful?"
-          id="outlined-multiline-static"
-          defaultValue=""
-          value={fb.suggestions}
-          onChange={(e) => setFb({ ...fb, suggestions: e.target.value })}
-          placeholder='Enter here'
-          variant="outlined"
-          className={classes.white}
-          rows={4}
-          multiline
-          InputLabelProps={{
-            classes: {
-              root: classes.cssLabel,
-              focused: classes.cssFocused,
-            },
-          }}
-          InputProps={{
-            classes: {
-              root: classes.cssOutlinedInput,
-              focused: classes.cssFocused,
-              notchedOutline: classes.notchedOutline,
-            },
-            className: classes.onlyWhite
-          }}
-        />
-        <TextField
-          label="Is there anything else you would like us to know about?"
-          id="outlined-multiline-static"
-          defaultValue=""
-          value={fb.feedback}
-          onChange={(e) => setFb({ ...fb, feedback: e.target.value })}
-          placeholder='Enter here'
-          variant="outlined"
-          className={classes.white}
-          rows={4}
-          multiline
-          InputLabelProps={{
-            classes: {
-              root: classes.cssLabel,
-              focused: classes.cssFocused,
-            },
-          }}
-          InputProps={{
-            classes: {
-              root: classes.cssOutlinedInput,
-              focused: classes.cssFocused,
-              notchedOutline: classes.notchedOutline,
-            },
-            className: classes.onlyWhite
-          }}
-        />
-       </div>
-      <div className='body-content-page5'>
-        <Grid justify='space-between' container spacing={24}>
-          <IconButton>
-            <ArrowBackIcon style={{ fontSize: 60, color: '#222222' }} onClick={prevPage} />
-          </IconButton>
-          <Button
-            style={{
-              borderRadius: 10,
-              backgroundColor: "#21b6ae",
-              padding: "18px 36px",
-              fontSize: "24px",
-              fontWeight: "bold"
+                <Typography  align="center" ml={3} className={classes.title}  variant="subheading" component="h4">On a city level </Typography>
+                    <Grid
+                        direction='column'
+                        justify="center" // Add it here :)
+                        container 
+                        alignItems="center"
+                        spacing={0}
+                    >
+                        <Grid item>
+                                <StyledRating2
+                                max={6}
+                                name="rating7"
+                                precision={1}
+                                icon={<StarIcon fontSize="large" color='white' />}
+                                value={fb.rating7}
+                                onChange={(event, newValue) => {
+                                    // setRating7(newValue);
+                                    setFb( { ...fb, rating7 : newValue } )
+                                }}
+                                onChangeActive={(event, newHover) => {
+                                    setRating7Hover(newHover);
+                                }}
+                            />
+                        </Grid>
+                        <Grid item>
+                            {fb.rating7 !== null && <Box className={classes.onlyWhite} >{labels[rating7Hover !== -1 ? rating7Hover : fb.rating7]}</Box>}
+                        </Grid>
+                    </Grid>
+            </div>
+            <div className='body-content-big-topspace black-over'>
+                <Typography  align="center"  className={classes.title}   variant="headline" component="h3">How are your current volunteering hours split up, in a typical week?</Typography>
 
-            }}
-            color="#333333"
-            onClick={() => {
-              console.log(fb);
-              let val = ValidationTheFb()
-              if (val === true) {
-                PostFb()
-                nextPage()
-              } else {
-                alert(val)
-              }
-            }}
-          > Submit </Button>
-        </Grid>
-      </div>
-    </div>
-  );
+                <FormControl className={classes.formControl}>
+                    <InputLabel  align="center"  className={classes.whiteText} id="demo-controlled-open-select-label">Center Class </InputLabel>
+                    <Select
+                        
+                        labelId="demo-controlled-open-select-label"
+                        id="demo-controlled-open-select"
+                        open={openCenterClass}
+                        onClose={() => setOpenCenterClass(false)}
+                        onOpen={() => setOpenCenterClass(true)}
+                        value={fb.classDuration}
+                        onChange={(e) => setFb({ ...fb, classDuration: e.target.value })}
+                        className={classes.select}
+                        inputProps={{
+                            classes: {
+                                icon: classes.selectIcon,
+                            },
+                        }}
+                    >
+                        {/* <MenuItem className={classes.whiteText} value="">
+                            <em>None</em>
+                        </MenuItem> */}
+                        <MenuItem value={'no time'}>No Time</MenuItem>
+                        <MenuItem value={'15-30 mins'}>15-30 mins</MenuItem>
+                        <MenuItem value={'30 mins -1 hr'}>30 mins -1 hr</MenuItem>
+                        <MenuItem value={'1-2 hrs'}>1-2 hrs</MenuItem>
+                        <MenuItem value={'>2hrs'}>>2hrs</MenuItem>
+                        
+                    </Select>
+                </FormControl>
+                <FormControl className={classes.formControl}>
+                    <InputLabel className={classes.whiteText} id="demo-controlled-open-select-label">Content and Class preparation </InputLabel>
+                    <Select
+                        
+                        labelId="demo-controlled-open-select-label"
+                        id="demo-controlled-open-select"
+                        open={openPrep}
+                        onClose={() => setOpenPrep(false)}
+                        onOpen={() => setOpenPrep(true)}
+                        value={fb.prepDuration}
+                        onChange={(e) => setFb({ ...fb, prepDuration: e.target.value })}
+                        className={classes.select}
+                        inputProps={{
+                            classes: {
+                                icon: classes.selectIcon,
+                            },
+                        }}
+                    >
+                        {/* <MenuItem className={classes.whiteText} value="">
+                            <em>None</em>
+                        </MenuItem> */}
+                        <MenuItem value={'no time'}>No Time</MenuItem>
+                        <MenuItem value={'15-30 mins'}>15-30 mins</MenuItem>
+                        <MenuItem value={'30 mins -1 hr'}>30 mins -1 hr</MenuItem>
+                        <MenuItem value={'1-2 hrs'}>1-2 hrs</MenuItem>
+                        <MenuItem value={'>2hrs'}>>2hrs</MenuItem>
+                        
+                    </Select>
+                </FormControl>
+                <FormControl className={classes.formControl}>
+                    <InputLabel className={classes.whiteText} id="demo-controlled-open-select-label"> Volunteer bonding activities</InputLabel>
+                    <Select
+                        
+                        labelId="demo-controlled-open-select-label"
+                        id="demo-controlled-open-select"
+                        open={openBonding}
+                        onClose={() => setOpenBonding(false)}
+                        onOpen={() => setOpenBonding(true)}
+                        value={fb.bondDuration}
+                        onChange={(e) => setFb({ ...fb, bondDuration: e.target.value })}
+                        className={classes.select}
+                        inputProps={{
+                            classes: {
+                                icon: classes.selectIcon,
+                            },
+                        }}
+                    >
+                        {/* <MenuItem className={classes.whiteText} value="">
+                            <em>None</em>
+                        </MenuItem> */}
+                        <MenuItem value={'no time'}>No Time</MenuItem>
+                        <MenuItem value={'15-30 mins'}>15-30 mins</MenuItem>
+                        <MenuItem value={'30 mins -1 hr'}>30 mins -1 hr</MenuItem>
+                        <MenuItem value={'1-2 hrs'}>1-2 hrs</MenuItem>
+                        <MenuItem value={'>2hrs'}>>2hrs</MenuItem>
+                        
+                    </Select>
+                </FormControl>
+            </div>            
+            <div className='body-content-big-topspace black-over'>
+                <Typography  align="center" className={classes.title}   variant="headline" component="h3">Indicate the statement that best describes your state post induction as a volunteer?</Typography>
+
+                <FormControl className={classes.formControl}>
+                        <InputLabel className={classes.whiteText} id="demo-controlled-open-select-label">Select for options here</InputLabel>
+                        <Select
+                            className={classes.whiteText}
+                            labelId="demo-controlled-open-select-label"
+                            id="demo-controlled-open-select"
+                            open={openInduction}
+                            onClose={() => setOpenInduction(false)}
+                            onOpen={() => setOpenInduction(true)}
+                            value={fb.induction}
+                            onChange={(e) => setFb({ ...fb, induction: e.target.value })}
+                            className={classes.select}
+                            inputProps={{
+                                classes: {
+                                    icon: classes.selectIcon,
+                                },
+                            }}
+                        >
+                            {/* <MenuItem value="">
+                                <em>None</em>
+                            </MenuItem> */}
+                            <MenuItem value={'Less Involved'}> Less Involved </MenuItem>
+                            <MenuItem value={'More involved'}> More involved </MenuItem>
+                            <MenuItem value={'Involved in domains of your expertise'}> Involved in domains of your expertise </MenuItem>
+                            <MenuItem value={'Involved in different domains '}> Involved in different domains </MenuItem>
+                            
+                        </Select>
+                    </FormControl>
+            </div>
+            
+            <div className='body-content-big-topspace black-over'>
+                <Typography  align="center"  className={classes.title}   variant="headline" component="h3">Indicate the ease of understanding the project flow (in terms of project’s vision, goals, timelines, syllabus, assessments for kids, content delivery, knowing the POCs) </Typography>
+
+                <FormControl className={classes.formControl}>
+                        <InputLabel className={classes.whiteText} id="demo-controlled-open-select-label">Select for options here</InputLabel>
+                        <Select
+                            
+                            labelId="demo-controlled-open-select-label"
+                            id="demo-controlled-open-select"
+                            open={openProjectFlow}
+                            onClose={() => setOpenProjectFlow(false)}
+                            onOpen={() => setOpenProjectFlow(true)}
+                            value={fb.projectFlow}
+                            onChange={(e) => setFb({ ...fb, projectFlow: e.target.value })}
+                            className={classes.select}
+                            inputProps={{
+                                classes: {
+                                    icon: classes.selectIcon,
+                                },
+                            }}
+                        >
+                            {/* <MenuItem  value="">
+                                <em>None</em>
+                            </MenuItem> */}
+                            <MenuItem value={'Extremely easy'}> Extremely easy  </MenuItem>
+                            <MenuItem value={'Quite Easy'}> Quite Easy </MenuItem>
+                            <MenuItem value={'Quite difficult'}> Quite difficult </MenuItem>
+                            <MenuItem value={'Extremely difficult'}> Extremely difficult     </MenuItem>
+                            
+                        </Select>
+                    </FormControl>
+            </div>
+            <div className='body-content-big '> 
+                <Grid justify='space-between' container spacing={24}>
+                        <IconButton>
+                            <ArrowBackIcon style={{ fontSize: 60, color:'#333333' }} onClick={prevPage} />
+                        </IconButton>
+                        <IconButton>
+                            <ArrowForwardIcon  
+                                style={{ fontSize: 60, color:'#333333' }}  
+                                onClick={   () => { 
+                                    console.log(fb); 
+                                    let val = ValidationTheFb()     
+                                    if (val === true) {
+                                        nextPage()
+                                    } else {
+                                        alert(val)
+                                    }
+                                 }}
+                            />
+                        </IconButton>
+                </Grid>
+            </div>
+        </div>
+    );
 }
 
-export default Page6
+export default Page4

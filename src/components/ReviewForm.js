@@ -4,9 +4,9 @@ import Page2 from './page2'
 import Page3 from './page3'
 import Page4 from './page4'
 import Page5 from './page5'
-// import Page6 from './page6'
-import Wait from './wait'
+import Page6 from './page6'
 import Page7 from './page7'
+import Wait from './wait'
 import axios from 'axios'
 import '../assets/styles/ReviewForm.css'
 import { useRecoilState } from 'recoil';
@@ -42,10 +42,7 @@ const ReviewForm = () => {
 			}
 			{
 				currentPage === 6 ?
-					<Page7/>  : null 
-					// <Page6 prevPage={() => this.setState({ currentPage: 5 })} nextPage={() => this.setState({ currentPage: 7 })} /> : null
-
-					
+					<Page6 prevPage={() =>setCurrentPage(5)} nextPage={() => setCurrentPage(7)}  /> : null					
 			}
 			{
 				currentPage === 7 ?

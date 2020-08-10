@@ -1,67 +1,46 @@
-import React, {useState} from 'react';
+import React , { useState }from 'react';
 import clsx from 'clsx';
 import Radio from '@material-ui/core/Radio';
+import Box from '@material-ui/core/Box';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
+import Typography from '@material-ui/core/Typography';
 import FormLabel from '@material-ui/core/FormLabel';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 import { useRecoilState } from 'recoil';
 import { feedback } from './fbAtom';
-import Typography from '@material-ui/core/Typography';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
-import Box from '@material-ui/core/Box';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import Rating from '@material-ui/lab/Rating';
+import StarIcon from '@material-ui/icons/Star';
 
 
 const useStyles = makeStyles((theme) => ({
     button: {
         display: 'block',
-        marginTop: theme.spacing(1),
+        marginTop: theme.spacing(2),
     },
     onlyWhite:{
         color: "white",
     },
-
-    textField: {
-        marginTop: theme.spacing(1),
-        color: "white",
-    },
     title:{
-        margin: theme.spacing(1),
-        color: "white",
-    },
-    whiteText:{
+        margin: theme.spacing(2),
         color: "white",
     },
     formControl: {
-        margin: theme.spacing(1),
+        margin: theme.spacing(2),
         minWidth: 120,
         color: 'white',
+        fontSize: '63px',
     },
     root: {
       '&:hover': {
         backgroundColor: 'transparent',
       },
-    },
-    select: {
-        '&:before': {
-            borderColor: 'white',
-        },
-        '&:after': {
-            borderColor: 'white',
-        },
-        color: "white",
-    },
-    selectIcon: {
-        fill: 'white',
     },
     icon: {
       borderRadius: '50%',
@@ -96,10 +75,10 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: '#106ba3',
       },
     },
-}));
+  }));
   
-// Inspired by blueprintjs
-function StyledRadio(props) {
+  // Inspired by blueprintjs
+  function StyledRadio(props) {
     const classes = useStyles();
   
     return (
@@ -111,20 +90,38 @@ function StyledRadio(props) {
         icon={<span className={classes.icon} />}
         {...props}
       />
-    ); 
-}  
+    );
+  } 
 
-const StyledRating = withStyles({
+  const StyledRating = withStyles({
     icon:{
         color : '#333333'
     },
     iconFilled: {
-      color: '#ff6d75',
-    },
-    iconHover: {
       color: '#ff3d47',
     },
+    iconHover: {
+      color: '#DB7093',
+    },
   })(Rating);
+
+  const StyledRating2 = withStyles({
+    icon:{
+        color : '#333333'
+    },
+    iconFilled: {
+      color: '#FFDF00',
+    },
+    iconHover: {
+      color: '#FFDF00',
+    },
+  })(Rating);
+
+  
+
+
+
+
 
   const labels = {
     1: 'Strongly Disagree',
@@ -134,253 +131,195 @@ const StyledRating = withStyles({
     5: 'Agree',
     6: 'Strongly Agree',
   };
-const Page4 = ({ prevPage, nextPage}) => {
+const Page4 = ({ prevPage, nextPage }) => {
     const classes = useStyles();
     const [fb, setFb] = useRecoilState(feedback);
-    const [openInduction, setOpenInduction] = React.useState(false);
-    const [openProjectFlow, setOpenProjectFlow] = React.useState(false);
-    const [openCenterClass, setOpenCenterClass] = React.useState(false);
-    const [openPrep, setOpenPrep] = React.useState(false);
-    const [openBonding, setOpenBonding] = React.useState(false);
-
-    const [rating6, setRating6] = useState(-1)
-    const [rating6Hover, setRating6Hover] = useState(-1)
-    const [rating7, setRating7] = useState(-1)
-    const [rating7Hover, setRating7Hover] = useState(-1)
+    const [rating8, setRating8] = useState(-1)
+    const [rating8Hover, setRating8Hover] = useState(-1)
+    const [rating9, setRating9] = useState(-1)
+    const [rating9Hover, setRating9Hover] = useState(-1)
+    const [rating10, setRating10] = useState(-1)
+    const [rating10Hover, setRating10Hover] = useState(-1)
+    const [rating11, setRating11] = useState(-1)
+    const [rating11Hover, setRating11Hover] = useState(-1)
+    const [rating12, setRating12] = useState(-1)
+    const [rating12Hover, setRating12Hover] = useState(-1)
 
     const ValidationTheFb = () => {
-        if ((fb.rating6 === -1 ) || (fb.rating7 === -1 ) || (fb.classDuration === null ) || (fb.prepDuration === null ) || (fb.bondDuration === null ) || (fb.induction === null ) || (fb.projectFlow === null )   || (fb.projectFlow === '' )  || (fb.induction === '' )){
+        if ((fb.rating8 === -1 ) || (fb.rating9 === -1 ) || (fb.rating10 === -1 ) || (fb.rating11 === -1 ) || (fb.rating12 === -1 )){
             return 'Please fill everything :-)'
         }
         return true
     }
+    const setAllRating  = () => {
+        // setFb({...fb , rating1, rating2,rating3,rating4,rating5})
+    }
     return (
-        <div className='content-area2 page-4 ' >
-            <div className='body-content-big-topspace black-over'>
-                <Typography  className={classes.title}   variant="headline" component="h3">How are your current volunteering hours split up, in a typical week?</Typography>
-
-                <FormControl className={classes.formControl}>
-                    <InputLabel className={classes.whiteText} id="demo-controlled-open-select-label">Center Class </InputLabel>
-                    <Select
-                        
-                        labelId="demo-controlled-open-select-label"
-                        id="demo-controlled-open-select"
-                        open={openCenterClass}
-                        onClose={() => setOpenCenterClass(false)}
-                        onOpen={() => setOpenCenterClass(true)}
-                        value={fb.classDuration}
-                        onChange={(e) => setFb({ ...fb, classDuration: e.target.value })}
-                        className={classes.select}
-                        inputProps={{
-                            classes: {
-                                icon: classes.selectIcon,
-                            },
-                        }}
-                    >
-                        {/* <MenuItem className={classes.whiteText} value="">
-                            <em>None</em>
-                        </MenuItem> */}
-                        <MenuItem value={'no time'}>No Time</MenuItem>
-                        <MenuItem value={'15-30 mins'}>15-30 mins</MenuItem>
-                        <MenuItem value={'30 mins -1 hr'}>30 mins -1 hr</MenuItem>
-                        <MenuItem value={'1-2 hrs'}>1-2 hrs</MenuItem>
-                        <MenuItem value={'>2hrs'}>>2hrs</MenuItem>
-                        
-                    </Select>
-                </FormControl>
-                <FormControl className={classes.formControl}>
-                    <InputLabel className={classes.whiteText} id="demo-controlled-open-select-label">Content and Class preparation </InputLabel>
-                    <Select
-                        
-                        labelId="demo-controlled-open-select-label"
-                        id="demo-controlled-open-select"
-                        open={openPrep}
-                        onClose={() => setOpenPrep(false)}
-                        onOpen={() => setOpenPrep(true)}
-                        value={fb.prepDuration}
-                        onChange={(e) => setFb({ ...fb, prepDuration: e.target.value })}
-                        className={classes.select}
-                        inputProps={{
-                            classes: {
-                                icon: classes.selectIcon,
-                            },
-                        }}
-                    >
-                        {/* <MenuItem className={classes.whiteText} value="">
-                            <em>None</em>
-                        </MenuItem> */}
-                        <MenuItem value={'no time'}>No Time</MenuItem>
-                        <MenuItem value={'15-30 mins'}>15-30 mins</MenuItem>
-                        <MenuItem value={'30 mins -1 hr'}>30 mins -1 hr</MenuItem>
-                        <MenuItem value={'1-2 hrs'}>1-2 hrs</MenuItem>
-                        <MenuItem value={'>2hrs'}>>2hrs</MenuItem>
-                        
-                    </Select>
-                </FormControl>
-                <FormControl className={classes.formControl}>
-                    <InputLabel className={classes.whiteText} id="demo-controlled-open-select-label"> Volunteer bonding activities</InputLabel>
-                    <Select
-                        
-                        labelId="demo-controlled-open-select-label"
-                        id="demo-controlled-open-select"
-                        open={openBonding}
-                        onClose={() => setOpenBonding(false)}
-                        onOpen={() => setOpenBonding(true)}
-                        value={fb.bondDuration}
-                        onChange={(e) => setFb({ ...fb, bondDuration: e.target.value })}
-                        className={classes.select}
-                        inputProps={{
-                            classes: {
-                                icon: classes.selectIcon,
-                            },
-                        }}
-                    >
-                        {/* <MenuItem className={classes.whiteText} value="">
-                            <em>None</em>
-                        </MenuItem> */}
-                        <MenuItem value={'no time'}>No Time</MenuItem>
-                        <MenuItem value={'15-30 mins'}>15-30 mins</MenuItem>
-                        <MenuItem value={'30 mins -1 hr'}>30 mins -1 hr</MenuItem>
-                        <MenuItem value={'1-2 hrs'}>1-2 hrs</MenuItem>
-                        <MenuItem value={'>2hrs'}>>2hrs</MenuItem>
-                        
-                    </Select>
-                </FormControl>
-            </div>
-            <div className='body-content-big-topspace black-over'>
-                <Typography  className={classes.title}   variant="headline" component="h3">Did the leadership teams create enough opportunities for you to volunteer ? </Typography>
+        <div className='content-area2 page-3 ' >
+            {/* <h3 style={{ color: "black" }} > </h3>  */}
+            <div className='body-content-page3 black-over'>
+                <Typography align="center"  className={classes.title}   variant="headline" component="h2">I think I</Typography>
                
-                <Typography ml={3} className={classes.title}  variant="subheading" component="h4">On a project level </Typography>
-                <Box ml={6} mr={6}>
-                    <Grid
-                        justify="space-between" // Add it here :)
-                        container 
-                        spacing={24}
-                    >
-                        <Grid item>
-                                <StyledRating
-                                max={6}
-                                name="rating6"
-                                precision={1}
-                                icon={<FavoriteIcon fontSize="large" color='white' />}
-                                value={fb.rating6}
-                                onChange={(event, newValue) => {
-                                    // setRating6(newValue);
-                                    setFb( { ...fb, rating6 : newValue } )
-                                }}
-                                onChangeActive={(event, newHover) => {
-                                    setRating6Hover(newHover);
-                                }}
-                            />
-                        </Grid>
-                        <Grid item>
-                            {fb.rating6 !== null && <Box className={classes.onlyWhite} >{labels[rating6Hover !== -1 ? rating6Hover : fb.rating6]}</Box>}
-                        </Grid>
-                    </Grid>
-                </Box>
-
-                <Typography ml={3} className={classes.title}  variant="subheading" component="h4">On a city level </Typography>
-                <Box ml={6} mr={6}>
-                    <Grid
-                        justify="space-between" // Add it here :)
-                        container 
-                        spacing={24}
-                    >
-                        <Grid item>
-                                <StyledRating
-                                max={6}
-                                name="rating7"
-                                precision={1}
-                                icon={<FavoriteIcon fontSize="large" color='white' />}
-                                value={fb.rating7}
-                                onChange={(event, newValue) => {
-                                    // setRating7(newValue);
-                                    setFb( { ...fb, rating7 : newValue } )
-                                }}
-                                onChangeActive={(event, newHover) => {
-                                    setRating7Hover(newHover);
-                                }}
-                            />
-                        </Grid>
-                        <Grid item>
-                            {fb.rating7 !== null && <Box className={classes.onlyWhite} >{labels[rating7Hover !== -1 ? rating7Hover : fb.rating7]}</Box>}
-                        </Grid>
-                    </Grid>
-                </Box>                     
-            </div>
-            <div className='body-content-big-topspace black-over'>
-                <Typography  className={classes.title}   variant="headline" component="h3">Indicate the statement that best describes your state post induction as a volunteer?</Typography>
-
-                <FormControl className={classes.formControl}>
-                        <InputLabel className={classes.whiteText} id="demo-controlled-open-select-label">Select for options here</InputLabel>
-                        <Select
-                            className={classes.whiteText}
-                            labelId="demo-controlled-open-select-label"
-                            id="demo-controlled-open-select"
-                            open={openInduction}
-                            onClose={() => setOpenInduction(false)}
-                            onOpen={() => setOpenInduction(true)}
-                            value={fb.induction}
-                            onChange={(e) => setFb({ ...fb, induction: e.target.value })}
-                            className={classes.select}
-                            inputProps={{
-                                classes: {
-                                    icon: classes.selectIcon,
-                                },
+                <Typography  align="center" ml={3} className={classes.title}  variant="subheading" component="h4">Can dedicate more time to volunteer with Bhumi  </Typography>
+                <Grid
+                    direction='column'
+                    justify="center" // Add it here :)
+                    container 
+                    alignItems="center"
+                    spacing={0}
+                >
+                    <Grid justify="center"  item>
+                            <StyledRating
+                            max={6}
+                            name="rating8"
+                            precision={1}
+                            icon={<FavoriteIcon fontSize="large" color='white' />}
+                            value={fb.rating8}
+                            onChange={(event, newValue) => {
+                                // setRating1(newValue);
+                                setFb( { ...fb, rating8 : newValue } )
                             }}
-                        >
-                            {/* <MenuItem value="">
-                                <em>None</em>
-                            </MenuItem> */}
-                            <MenuItem value={'Less Involved'}> Less Involved </MenuItem>
-                            <MenuItem value={'More involved'}> More involved </MenuItem>
-                            <MenuItem value={'Involved in domains of your expertise'}> Involved in domains of your expertise </MenuItem>
-                            <MenuItem value={'Involved in different domains '}> Involved in different domains </MenuItem>
-                            
-                        </Select>
-                    </FormControl>
+                            onChangeActive={(event, newHover) => {
+                                setRating8Hover(newHover);
+                            }}
+                        />
+                    </Grid>
+                    <Grid justify="center" item>
+                        {fb.rating8 !== null ? <Box className={classes.onlyWhite} >{labels[rating8Hover !== -1 ? rating8Hover : fb.rating8]}</Box> :  <Box className={classes.onlyWhite}> Nothing Selected. </Box> }
+                    </Grid>
+                </Grid>
+
+                <Typography align="center" ml={3} className={classes.title}  variant="subheading" component="h4">Understand the project flow? </Typography>
+                <Grid
+                    direction='column'
+                    justify="center" // Add it here :)
+                    container 
+                    alignItems="center"
+                    spacing={0}
+                >
+                    <Grid justify="center"  item>
+                        <StyledRating
+                            max={6}
+                            name="rating9"
+                            precision={1}
+                            icon={<FavoriteIcon fontSize="large" color='white' />}
+                            value={fb.rating9}
+                            onChange={(event, newValue) => {
+                                // setRating2(newValue);
+                                setFb( { ...fb, rating9 : newValue } )
+
+                            }}
+                            onChangeActive={(event, newHover) => {
+                                setRating9Hover(newHover);
+                            }}
+                        />
+                    </Grid>
+                    <Grid item justify="center" >
+                        {fb.rating9 !== null && <Box className={classes.onlyWhite} >{labels[rating9Hover !== -1 ? rating9Hover : fb.rating9]}</Box>}
+                    </Grid>
+                </Grid>
+                    
+                
+                <Typography align="center" ml={3} className={classes.title}  variant="subheading" component="h4"> Understand the impact created through my volunteering work </Typography>
+                <Grid
+                   direction='column'
+                   justify="center" // Add it here :)
+                   container 
+                   alignItems="center"
+                   spacing={0}
+                >
+                    <Grid justify="center"  item>
+                        <StyledRating
+                            max={6}
+                            name="rating10"
+                            precision={1}
+                            icon={<FavoriteIcon fontSize="large" color='white' />}
+                            value={fb.rating10}
+                            onChange={(event, newValue) => {
+                                // setRating3(newValue);
+                                setFb( { ...fb, rating10 : newValue } )
+
+                            }}
+                            onChangeActive={(event, newHover) => {
+                                setRating10Hover(newHover);
+                            }}
+                        />
+                    </Grid>
+
+                    <Grid justify="center"  item>
+                        {fb.rating10 !== null && <Box className={classes.onlyWhite} ml={2}>{labels[rating10Hover !== -1 ? rating10Hover : fb.rating10]}</Box>}
+                    </Grid>
+                </Grid>
+
+
+                <Typography align="center" ml={3} className={classes.title}  variant="subheading" component="h4">Am content with the volunteer training sessions that are in place </Typography>
+                <Grid
+                    direction='column'
+                    justify="center" // Add it here :)
+                    container 
+                    alignItems="center"
+                    spacing={0}
+                >
+                    <Grid justify="center"  item>
+                        <StyledRating
+                            max={6}
+                            name="rating11"
+                            precision={1}
+                            icon={<FavoriteIcon fontSize="large" color='white' />}
+                            value={fb.rating11}
+                            onChange={(event, newValue) => {
+                                // setRating4(newValue);
+                                setFb( { ...fb, rating11 : newValue } )
+                            }}
+                            onChangeActive={(event, newHover) => {
+                                setRating11Hover(newHover);
+                            }}
+                        />
+                    </Grid>
+                    <Grid>
+                        {fb.rating11 !== null && <Box className={classes.onlyWhite} >{labels[rating11Hover !== -1 ? rating11Hover : fb.rating11]}</Box>}
+                    </Grid>
+                </Grid>
+               
+                <Typography align="center" ml={3} className={classes.title}  variant="headline" component="h4">Taking ownership and accountability in resolving issues (if any) </Typography>
+                <Grid
+                    direction='column'
+                    justify="center" // Add it here :)
+                    container 
+                    alignItems="center"
+                    spacing={0}
+                >
+                    <Grid item>
+                        <StyledRating
+                            max={6}
+                            name="rating12"
+                            precision={1}
+                            icon={<FavoriteIcon fontSize="large" color='white' />}
+                            value={fb.rating12}
+                            onChange={(event, newValue) => {
+                                // setRating5(newValue);
+                                setFb( { ...fb, rating12 : newValue } )
+
+                            }}
+                            onChangeActive={(event, newHover) => {
+                                setRating11Hover(newHover);
+                            }}
+                        />
+                    </Grid>
+                    <Grid>
+                        {fb.rating12 !== null && <Box className={classes.onlyWhite} >{labels[rating12Hover !== -1 ? rating12Hover : fb.rating12]}</Box>}
+                    </Grid>
+                </Grid>
             </div>
             
-            <div className='body-content-big-topspace black-over'>
-                <Typography  className={classes.title}   variant="headline" component="h3">Indicate the ease of understanding the project flow (in terms of project’s vision, goals, timelines, syllabus, assessments for kids, content delivery, knowing the POCs) </Typography>
-
-                <FormControl className={classes.formControl}>
-                        <InputLabel className={classes.whiteText} id="demo-controlled-open-select-label">Select for options here</InputLabel>
-                        <Select
-                            
-                            labelId="demo-controlled-open-select-label"
-                            id="demo-controlled-open-select"
-                            open={openProjectFlow}
-                            onClose={() => setOpenProjectFlow(false)}
-                            onOpen={() => setOpenProjectFlow(true)}
-                            value={fb.projectFlow}
-                            onChange={(e) => setFb({ ...fb, projectFlow: e.target.value })}
-                            className={classes.select}
-                            inputProps={{
-                                classes: {
-                                    icon: classes.selectIcon,
-                                },
-                            }}
-                        >
-                            {/* <MenuItem  value="">
-                                <em>None</em>
-                            </MenuItem> */}
-                            <MenuItem value={'Extremely easy'}> Extremely easy  </MenuItem>
-                            <MenuItem value={'Quite Easy'}> Quite Easy </MenuItem>
-                            <MenuItem value={'Quite difficult'}> Quite difficult </MenuItem>
-                            <MenuItem value={'Extremely difficult'}> Extremely difficult     </MenuItem>
-                            
-                        </Select>
-                    </FormControl>
-            </div>
             <div className='body-content-big '> 
                 <Grid justify='space-between' container spacing={24}>
                         <IconButton>
-                            <ArrowBackIcon style={{ fontSize: 60, color:'#333333' }} onClick={prevPage} />
+                            <ArrowBackIcon  style={{ fontSize: 60, color:'#333333' }} onClick={prevPage} />
                         </IconButton>
                         <IconButton>
                             <ArrowForwardIcon  
-                                style={{ fontSize: 60, color:'#333333' }}  
+                                style={{ fontSize: 60, color:'#333333' }} 
                                 onClick={   () => { 
                                     console.log(fb); 
                                     let val = ValidationTheFb()     
@@ -395,6 +334,7 @@ const Page4 = ({ prevPage, nextPage}) => {
                 </Grid>
             </div>
         </div>
+
     );
 }
 
