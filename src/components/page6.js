@@ -87,7 +87,11 @@ const Page6 = ({ prevPage, nextPage }) => {
           if (res.status === 200) {
               
           } else if(res.status === 401) {
-              alert('Something went wrong , Please try again later')
+              if (res.data.includes('UNIQUE')) {
+                alert('You have already filled')
+              } else {
+                alert('Something went wrong , Please try again later')
+              }
           } else {
             alert('Something went wrong , Please try again later');
           }
