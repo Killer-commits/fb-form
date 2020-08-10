@@ -132,7 +132,7 @@
 }
 
 .page-1 {
-  background-image: url('../images/Page1e.png');
+  background-image: url('../images/page1-port.jpg');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -304,6 +304,8 @@
 }
 
 .start-button-row {
+  position: absolute;
+  bottom:10px; 
   width: 50%;
   display: flex;
   align-items: center;
