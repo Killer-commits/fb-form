@@ -293,7 +293,8 @@ const Page2 = ({ prevPage, nextPage }) => {
                                 style={{ fontSize: 60, color:'#333333' }}   
                                 onClick={   () => { 
                                     console.log(fb); 
-                                    let val = ValidationTheFb()     
+                                    // let val = ValidationTheFb()     
+                                    let val = true
                                     if (val === true) {
                                         nextPage()
                                     } else {

@@ -68,8 +68,8 @@ const Page6 = ({ prevPage, nextPage }) => {
     let  data = JSON.stringify(fb)
     let config = {
       method: 'post',
-      // url: window.origin + '/api/post/form',
-      url: 'http://localhost:5000' + '/api/post/form',
+      url: window.origin + '/api/post/form',
+      // url: 'http://localhost:5000' + '/api/post/form',
       headers: { 
         'Content-Type': 'application/json'
       },
@@ -202,11 +202,7 @@ const Page6 = ({ prevPage, nextPage }) => {
             className: classes.onlyWhite
           }}
         />
-        {/* <input type='text' className='input-field' value={fb.experience} onChange={(e) => setFb({...fb, experience: e.target.value }) } placeholder='What have you enjoyed the most as a Bhumi volunteer?' /> */}
-        {/* <input type='text' className='input-field' value={fb.skillsAcquired} onChange={(e) => setFb({...fb, skillsAcquired: e.target.value }) } placeholder='Mention any 2 skills acquired/honed during your volunteering journey?' /> */}
-        {/* <input type='text' className='input-field' value={fb.suggestions} onChange={(e) => setFb({...fb, suggestions: e.target.value }) } placeholder='What could be improved to make your volunteering experience more enjoyable and fruitful?' /> */}
-        {/* <input type='text' className='input-field' value={fb.feedback} onChange={(e) => setFb({...fb, feedback: e.target.value }) } placeholder='Is there anything else you would like us to know about?' /> */}
-      </div>
+       </div>
       <div className='body-content-page5'>
         <Grid justify='space-between' container spacing={24}>
           <IconButton>

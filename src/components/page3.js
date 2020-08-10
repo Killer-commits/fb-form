@@ -16,6 +16,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import { useRecoilState } from 'recoil';
 import { feedback } from './fbAtom';
 import Rating from '@material-ui/lab/Rating';
+import StarIcon from '@material-ui/icons/Star';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -97,10 +98,22 @@ const useStyles = makeStyles((theme) => ({
         color : '#333333'
     },
     iconFilled: {
-      color: '#ff6d75',
+      color: '#ff3d47',
     },
     iconHover: {
-      color: '#ff3d47',
+      color: '#DB7093',
+    },
+  })(Rating);
+
+  const StyledRating2 = withStyles({
+    icon:{
+        color : '#333333'
+    },
+    iconFilled: {
+      color: '#FFDF00',
+    },
+    iconHover: {
+      color: '#FFDF00',
     },
   })(Rating);
 
@@ -145,158 +158,158 @@ const Page3 = ({ prevPage, nextPage }) => {
         <div className='content-area2 page-3 ' >
             {/* <h3 style={{ color: "black" }} > </h3>  */}
             <div className='body-content-page3 black-over'>
-                <Typography  className={classes.title}   variant="headline" component="h2"> Rate the lead coordinators of your project in the following aspects. </Typography>
+                <Typography align="center"  className={classes.title}   variant="headline" component="h2"> Rate the lead coordinators of your project in the following aspects. </Typography>
                
-                <Typography ml={3} className={classes.title}  variant="subheading" component="h4">Bringing inclusivity in project discussions, plans and setting up goals </Typography>
-                <Box ml={6} mr={6}>
-                    <Grid
-                        justify="space-between" // Add it here :)
-                        container 
-                        spacing={24}
-                    >
-                        <Grid item>
-                                <StyledRating
-                                max={6}
-                                name="rating1"
-                                precision={1}
-                                icon={<FavoriteIcon fontSize="large" color='white' />}
-                                value={fb.rating1}
-                                onChange={(event, newValue) => {
-                                    // setRating1(newValue);
-                                    setFb( { ...fb, rating1 : newValue } )
-                                }}
-                                onChangeActive={(event, newHover) => {
-                                    setRating1Hover(newHover);
-                                }}
-                            />
-                        </Grid>
-                        <Grid item>
-                            {fb.rating1 !== null && <Box className={classes.onlyWhite} >{labels[rating1Hover !== -1 ? rating1Hover : fb.rating1]}</Box>}
-                        </Grid>
+                <Typography  align="center" ml={3} className={classes.title}  variant="subheading" component="h4">Bringing inclusivity in project discussions, plans and setting up goals </Typography>
+                <Grid
+                    direction='column'
+                    justify="center" // Add it here :)
+                    container 
+                    alignItems="center"
+                    spacing={0}
+                >
+                    <Grid justify="center"  item>
+                            <StyledRating2
+                            max={6}
+                            name="rating1"
+                            precision={1}
+                            icon={<StarIcon fontSize="large" color='white' />}
+                            value={fb.rating1}
+                            onChange={(event, newValue) => {
+                                // setRating1(newValue);
+                                setFb( { ...fb, rating1 : newValue } )
+                            }}
+                            onChangeActive={(event, newHover) => {
+                                setRating1Hover(newHover);
+                            }}
+                        />
                     </Grid>
-                </Box>
-
-                <Typography ml={3} className={classes.title}  variant="subheading" component="h4">Addressing all your queries/concerns and staying supportive </Typography>
-                <Box ml={6} mr={6}>
-                    <Grid
-                        justify="space-between" // Add it here :)
-                        container 
-                        spacing={24}
-                    >
-                        <Grid item>
-                            <StyledRating
-                                max={6}
-                                name="rating2"
-                                precision={1}
-                                icon={<FavoriteIcon fontSize="large" color='white' />}
-                                value={fb.rating2}
-                                onChange={(event, newValue) => {
-                                    // setRating2(newValue);
-                                    setFb( { ...fb, rating2 : newValue } )
-
-                                }}
-                                onChangeActive={(event, newHover) => {
-                                    setRating2Hover(newHover);
-                                }}
-                            />
-                        </Grid>
-                        <Grid>
-                            {fb.rating2 !== null && <Box className={classes.onlyWhite} >{labels[rating2Hover !== -1 ? rating2Hover : fb.rating2]}</Box>}
-                        </Grid>
+                    <Grid justify="center" item>
+                        {fb.rating1 !== null ? <Box className={classes.onlyWhite} >{labels[rating1Hover !== -1 ? rating1Hover : fb.rating1]}</Box> :  <Box className={classes.onlyWhite}> Nothing Selected. </Box> }
                     </Grid>
-                </Box>
+                </Grid>
+
+                <Typography align="center" ml={3} className={classes.title}  variant="subheading" component="h4">Addressing all your queries/concerns and staying supportive </Typography>
+                <Grid
+                    direction='column'
+                    justify="center" // Add it here :)
+                    container 
+                    alignItems="center"
+                    spacing={0}
+                >
+                    <Grid justify="center"  item>
+                        <StyledRating2
+                            max={6}
+                            name="rating2"
+                            precision={1}
+                            icon={<StarIcon fontSize="large" color='white' />}
+                            value={fb.rating2}
+                            onChange={(event, newValue) => {
+                                // setRating2(newValue);
+                                setFb( { ...fb, rating2 : newValue } )
+
+                            }}
+                            onChangeActive={(event, newHover) => {
+                                setRating2Hover(newHover);
+                            }}
+                        />
+                    </Grid>
+                    <Grid item justify="center" >
+                        {fb.rating2 !== null && <Box className={classes.onlyWhite} >{labels[rating2Hover !== -1 ? rating2Hover : fb.rating2]}</Box>}
+                    </Grid>
+                </Grid>
                     
                 
-                <Typography ml={3} className={classes.title}  variant="subheading" component="h4"> Creating a positive volunteering environment (appreciation, feedback sessions, volunteer meetups</Typography>
-                <Box ml={6} mr={6}>
-                    <Grid
-                        justify="space-between" // Add it here :)
-                        container 
-                        spacing={24}
-                    >
-                        <Grid item>
-                            <StyledRating
-                                max={6}
-                                name="rating3"
-                                precision={1}
-                                icon={<FavoriteIcon fontSize="large" color='white' />}
-                                value={fb.rating3}
-                                onChange={(event, newValue) => {
-                                    // setRating3(newValue);
-                                    setFb( { ...fb, rating3 : newValue } )
+                <Typography align="center" ml={3} className={classes.title}  variant="subheading" component="h4"> Creating a positive volunteering environment (appreciation, feedback sessions, volunteer meetups</Typography>
+                <Grid
+                   direction='column'
+                   justify="center" // Add it here :)
+                   container 
+                   alignItems="center"
+                   spacing={0}
+                >
+                    <Grid justify="center"  item>
+                        <StyledRating
+                            max={6}
+                            name="rating3"
+                            precision={1}
+                            icon={<FavoriteIcon fontSize="large" color='white' />}
+                            value={fb.rating3}
+                            onChange={(event, newValue) => {
+                                // setRating3(newValue);
+                                setFb( { ...fb, rating3 : newValue } )
 
-                                }}
-                                onChangeActive={(event, newHover) => {
-                                    setRating3Hover(newHover);
-                                }}
-                            />
-                        </Grid>
-
-                        <Grid item>
-                            {fb.rating3 !== null && <Box className={classes.onlyWhite} ml={2}>{labels[rating3Hover !== -1 ? rating3Hover : fb.rating3]}</Box>}
-                        </Grid>
+                            }}
+                            onChangeActive={(event, newHover) => {
+                                setRating3Hover(newHover);
+                            }}
+                        />
                     </Grid>
-                </Box>
 
-
-                <Typography ml={3} className={classes.title}  variant="subheading" component="h4">Encouraging you to take part in all other volunteering activities (events, webinars) in Bhumi </Typography>
-                <Box ml={6} mr={6}>
-                    <Grid
-                        justify="space-between" // Add it here :)
-                        container 
-                        spacing={24}
-                    >
-                        <Grid item>
-                            <StyledRating
-                                max={6}
-                                name="rating4"
-                                precision={1}
-                                icon={<FavoriteIcon fontSize="large" color='white' />}
-                                value={fb.rating4}
-                                onChange={(event, newValue) => {
-                                    // setRating4(newValue);
-                                    setFb( { ...fb, rating4 : newValue } )
-                                }}
-                                onChangeActive={(event, newHover) => {
-                                    setRating4Hover(newHover);
-                                }}
-                            />
-                        </Grid>
-                        <Grid>
-                            {fb.rating4 !== null && <Box className={classes.onlyWhite} >{labels[rating4Hover !== -1 ? rating4Hover : fb.rating4]}</Box>}
-                        </Grid>
+                    <Grid justify="center"  item>
+                        {fb.rating3 !== null && <Box className={classes.onlyWhite} ml={2}>{labels[rating3Hover !== -1 ? rating3Hover : fb.rating3]}</Box>}
                     </Grid>
-                </Box>
+                </Grid>
+
+
+                <Typography align="center" ml={3} className={classes.title}  variant="subheading" component="h4">Encouraging you to take part in all other volunteering activities (events, webinars) in Bhumi </Typography>
+                <Grid
+                    direction='column'
+                    justify="center" // Add it here :)
+                    container 
+                    alignItems="center"
+                    spacing={0}
+                >
+                    <Grid justify="center"  item>
+                        <StyledRating
+                            max={6}
+                            name="rating4"
+                            precision={1}
+                            icon={<FavoriteIcon fontSize="large" color='white' />}
+                            value={fb.rating4}
+                            onChange={(event, newValue) => {
+                                // setRating4(newValue);
+                                setFb( { ...fb, rating4 : newValue } )
+                            }}
+                            onChangeActive={(event, newHover) => {
+                                setRating4Hover(newHover);
+                            }}
+                        />
+                    </Grid>
+                    <Grid>
+                        {fb.rating4 !== null && <Box className={classes.onlyWhite} >{labels[rating4Hover !== -1 ? rating4Hover : fb.rating4]}</Box>}
+                    </Grid>
+                </Grid>
                
-                <Typography ml={3} className={classes.title}  variant="headline" component="h4">Taking ownership and accountability in resolving issues (if any) </Typography>
-                <Box ml={6} mr={6}>
-                    <Grid
-                        justify="space-between" // Add it here :)
-                        container 
-                        spacing={24}
-                    >
-                        <Grid item>
-                            <StyledRating
-                                max={6}
-                                name="rating5"
-                                precision={1}
-                                icon={<FavoriteIcon fontSize="large" color='white' />}
-                                value={fb.rating5}
-                                onChange={(event, newValue) => {
-                                    // setRating5(newValue);
-                                    setFb( { ...fb, rating5 : newValue } )
+                <Typography align="center" ml={3} className={classes.title}  variant="headline" component="h4">Taking ownership and accountability in resolving issues (if any) </Typography>
+                <Grid
+                    direction='column'
+                    justify="center" // Add it here :)
+                    container 
+                    alignItems="center"
+                    spacing={0}
+                >
+                    <Grid item>
+                        <StyledRating
+                            max={6}
+                            name="rating5"
+                            precision={1}
+                            icon={<FavoriteIcon fontSize="large" color='white' />}
+                            value={fb.rating5}
+                            onChange={(event, newValue) => {
+                                // setRating5(newValue);
+                                setFb( { ...fb, rating5 : newValue } )
 
-                                }}
-                                onChangeActive={(event, newHover) => {
-                                    setRating5Hover(newHover);
-                                }}
-                            />
-                        </Grid>
-                        <Grid>
-                            {fb.rating5 !== null && <Box className={classes.onlyWhite} >{labels[rating5Hover !== -1 ? rating5Hover : fb.rating5]}</Box>}
-                        </Grid>
+                            }}
+                            onChangeActive={(event, newHover) => {
+                                setRating5Hover(newHover);
+                            }}
+                        />
                     </Grid>
-                </Box>
+                    <Grid>
+                        {fb.rating5 !== null && <Box className={classes.onlyWhite} >{labels[rating5Hover !== -1 ? rating5Hover : fb.rating5]}</Box>}
+                    </Grid>
+                </Grid>
             </div>
             
             <div className='body-content-big '> 
