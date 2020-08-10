@@ -305,7 +305,7 @@
 
 .start-button-row {
   position: absolute;
-  bottom:10px; 
+  bottom:2px; 
   width: 50%;
   display: flex;
   align-items: center;

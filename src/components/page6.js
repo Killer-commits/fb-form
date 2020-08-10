@@ -53,8 +53,30 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
+const styledBy = (property, mapping) => (props) => mapping[props[property]];
+
+const styles = {
+  root: {
+    background: styledBy('color', {
+      default: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+      blue: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
+    }),
+    borderRadius: 3,
+    border: 0,
+    color: 'white',
+    height: 48,
+    padding: '0 30px',
+    boxShadow: styledBy('color', {
+      default: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+      blue: '0 3px 5px 2px rgba(33, 203, 243, .3)',
+    }),
+  },
+};
 
 
+const StyledButton = withStyles(styles)(({ classes, color, ...other }) => (
+  <Button className={classes.root} {...other} />
+));
 
 
 const Page6 = ({ prevPage, nextPage }) => {
@@ -227,29 +249,22 @@ const Page6 = ({ prevPage, nextPage }) => {
       <div className='body-content-page6'>
         <Grid justify='space-between' container spacing={24}>
           <IconButton>
-            <ArrowBackIcon style={{ fontSize: 60, color: '#222222' }} onClick={prevPage} />
+            <ArrowBackIcon style={{ fontSize: 40, color: '#222222' }} onClick={prevPage} />
           </IconButton>
-          <Button
-            style={{
-              borderRadius: 10,
-              backgroundColor: "#BBBBBB",
-              padding: "18px 36px",
-              fontSize: "20px",
-              fontWeight: "bold"
-
-            }}
-            color="#333333"
-            onClick={() => {
-              console.log(fb);
-              let val = ValidationTheFb()
-              if (val === true) {
-                PostFb()
-                nextPage()
-              } else {
-                alert(val)
-              }
-            }}
-          > Submit </Button>
+          <StyledButton 
+              size="large" 
+              color={'blue'}
+              onClick={() => {
+                console.log(fb);
+                let val = ValidationTheFb()
+                if (val === true) {
+                  PostFb()
+                  nextPage()
+                } else {
+                  alert(val)
+                }
+              }}
+            >  Submit </StyledButton>
         </Grid>
       </div>
     </div>

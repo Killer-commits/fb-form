@@ -315,11 +315,11 @@ const Page3 = ({ prevPage, nextPage }) => {
             <div className='body-content-big '> 
                 <Grid justify='space-between' container spacing={24}>
                         <IconButton>
-                            <ArrowBackIcon  style={{ fontSize: 60, color:'#333333' }} onClick={prevPage} />
+                            <ArrowBackIcon  style={{ fontSize: 40, color:'#333333' }} onClick={prevPage} />
                         </IconButton>
                         <IconButton>
                             <ArrowForwardIcon  
-                                style={{ fontSize: 60, color:'#333333' }} 
+                                style={{ fontSize: 40, color:'#333333' }} 
                                 onClick={   () => { 
                                     console.log(fb); 
                                     let val = ValidationTheFb()     

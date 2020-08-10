@@ -249,11 +249,11 @@ const Page2 = ({ prevPage, nextPage }) => {
                         {/* <MenuItem value="">
                             <em>None</em>
                         </MenuItem> */}
-                        <MenuItem value={'<0.3'}> &lt;3 Months</MenuItem>
-                        <MenuItem value={'>0.3 - 0.6'}>3 - 6 Months</MenuItem>
-                        <MenuItem value={'>0.6 - 1'}>6 Months - 1 year</MenuItem>
-                        <MenuItem value={'1 - 2'}>1 - 2Year</MenuItem>
-                        <MenuItem value={'>2'}>>2 Years</MenuItem>
+                        <MenuItem value={'<0.3'}> &lt;3 months</MenuItem>
+                        <MenuItem value={'>0.3 - 0.6'}>3 - 6 months</MenuItem>
+                        <MenuItem value={'>0.6 - 1'}>6 months - 1 year</MenuItem>
+                        <MenuItem value={'1 - 2'}>1 - 2 year</MenuItem>
+                        <MenuItem value={'>2'}>>2 years</MenuItem>
                     </Select>
                 </FormControl>
 
@@ -295,11 +295,11 @@ const Page2 = ({ prevPage, nextPage }) => {
             <div className='body-content'>
                 <Grid justify='space-between' container spacing={24}>
                     <IconButton>
-                        <ArrowBackIcon style={{ fontSize: 60, color:'#333333' }} fontSize="large" onClick={prevPage} />
+                        <ArrowBackIcon style={{ fontSize: 40, color:'#333333' }} fontSize="large" onClick={prevPage} />
                     </IconButton>
                     <IconButton>
                         <ArrowForwardIcon 
-                            style={{ fontSize: 60, color:'#333333' }}   
+                            style={{ fontSize: 40, color:'#333333' }}   
                             onClick={   () => { 
                                 console.log(fb); 
                                 let val = ValidationTheFb()     
