@@ -99,7 +99,7 @@ const Page6 = ({ prevPage, nextPage }) => {
         },
         err => {
           setLoading(false)
-          console.log(res,res.data)
+          console.log(err)
           alert('Something went wrong , Please try again later');
         }
       )
