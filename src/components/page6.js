@@ -101,7 +101,9 @@ const Page6 = ({ prevPage, nextPage }) => {
           setLoading(false)
           console.log(err)
           if( err.response ){
-            console.log(err.response.data); // => the response payload 
+            if(err.response.data.includes('UNIQUE')){
+              alert('You have already filled')
+            }
           }
           alert('Something went wrong , Please try again later');
         }
