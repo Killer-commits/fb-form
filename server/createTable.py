@@ -23,7 +23,8 @@ CREATE TABLE `fb_form` (
 	`experience`	TEXT NOT NULL,
 	`skillsAcquired`	TEXT NOT NULL,
 	`suggestions`	TEXT NOT NULL,
-	`feedback`	TEXT NOT NULL
+	`feedback`	 TEXT NOT NULL,
+	`insertedTimeStamp` TEXT NOT NULL
 );'''
 conn = sqlite3.connect("./fbform.db")
 cur = conn.cursor()

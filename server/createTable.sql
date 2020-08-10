@@ -16,5 +16,7 @@ CREATE TABLE `fb_form` (
 	`projectFlow`	TEXT NOT NULL,
 	`skillsAcquired`	TEXT NOT NULL,
 	`suggestions`	TEXT NOT NULL,
-	`feedback`	TEXT NOT NULL
+	`feedback`	TEXT NOT NULL,
+	`insertedTimeStamp`	TEXT NOT NULL,
+
 );

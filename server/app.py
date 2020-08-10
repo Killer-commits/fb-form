@@ -2,8 +2,23 @@ import sqlite3, jwt, datetime, os, time, zipfile, requests
 from sqlite3 import Error
 from flask import Flask, jsonify, request, send_file
 from flask_cors import CORS
+from datetime import datetime
 
 app = Flask(__name__)
+
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+scope = [
+            "https://spreadsheets.google.com/feeds",
+            'https://www.googleapis.com/auth/spreadsheets',
+            "https://www.googleapis.com/auth/drive.file"
+            ,"https://www.googleapis.com/auth/drive"
+        ]
+credential = ServiceAccountCredentials.from_json_keyfile_name("../ignore/credentials.json", scope)
+client = gspread.authorize(credential)
+gsheet1 = client.open("vol-fb-form").worksheet("Sheet1")
+gsheet2 = client.open("vol-fb-form").worksheet("Sheet2")
+
 CORS(app)
 login_query = 'select * from users where email = ?'
 employee_for_manager_query = 'select * from users where manager = ?'
@@ -25,8 +40,8 @@ insert_form_query = '''
 insert into `fb_form` (name,mobile,email,duration,project,classDuration,prepDuration,
                     bondDuration,rating1,rating2,rating3,rating4,rating5,
                     rating6,rating7,rating8,induction,projectFlow,
-                    experience,skillsAcquired,suggestions,feedback) 
-values(? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,?,?,?,? )
+                    experience,skillsAcquired,suggestions,feedback,insertedTimeStamp) 
+values(? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,?,?,?,?,? )
 '''
 
 # name
@@ -48,8 +63,6 @@ values(? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,?,?,?,? )
 # skillsAcquired
 # suggestions
 # feedback
-
-
 
 @app.route('/')
 def hello_world():
@@ -81,13 +94,17 @@ def getUsers():
         skillsAcquired  = request.json["skillsAcquired"]
         suggestions  = request.json["suggestions"]
         feedback  = request.json["feedback"]
+        insertedTimeStamp = datetime.now().strftime("%d-%m-%Y, %H:%M:%S.%f")
+
+        row = [insertedTimeStamp,name,mobile,email,duration,project,rating1,rating2,rating3,rating4,rating5,rating6,rating7,rating8,induction,projectFlow,experience,skillsAcquired,suggestions,feedback]
+        gsheet1.insert_row(row, 2) 
 
         conn = sqlite3.connect("./fbform.db")
         cur = conn.cursor()
-        print(insert_form_query, (name,mobile,email,duration,project,classDuration,prepDuration,bondDuration,rating1,rating2,rating3,rating4,rating5,rating6,rating7,rating8,induction,projectFlow,experience,skillsAcquired,suggestions,feedback,))
-        data = cur.execute(insert_form_query, (name,mobile,email,duration,project,classDuration,prepDuration,bondDuration,rating1,rating2,rating3,rating4,rating5,rating6,rating7,rating8,induction,projectFlow,experience,skillsAcquired,suggestions,feedback,))
-        print (data)
+        print(insert_form_query, (name,mobile,email,duration,project,classDuration,prepDuration,bondDuration,rating1,rating2,rating3,rating4,rating5,rating6,rating7,rating8,induction,projectFlow,experience,skillsAcquired,suggestions,feedback,insertedTimeStamp,))
+        data = cur.execute(insert_form_query, (name,mobile,email,duration,project,classDuration,prepDuration,bondDuration,rating1,rating2,rating3,rating4,rating5,rating6,rating7,rating8,induction,projectFlow,experience,skillsAcquired,suggestions,feedback,insertedTimeStamp,))
         conn.commit()
+        gsheet2.insert_row(row, 2) 
         return jsonify("Hello"), 200
 
     except Exception  as e:

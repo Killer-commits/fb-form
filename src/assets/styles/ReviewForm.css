@@ -24,6 +24,13 @@
   background-size: cover;
   opacity: 0.7;
 }
+
+.black-over-2 {
+  background-image: url('../images/back.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.9;
+}
 .content-area {
   width: 100%;
   height: 100%;
@@ -42,6 +49,14 @@
   align-items: center;
   overflow-y: scroll;
 }
+.content-area1 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: bottom;
+  align-items: center;
+}
 
 .body-content {
   display: flex;
@@ -49,6 +64,25 @@
   flex-direction: column;
   width: 50%;
   padding-top: 1px;  
+}
+
+
+.body-content-page5 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 75%;
+  padding-top: 1px; 
+  margin-top: 25px; 
+}
+
+.body-content-page3 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 75%;
+  margin-top: 2%; 
+
 }
 
 .body-content-big {
@@ -68,14 +102,24 @@
   margin-top: 25px; 
 }
 
+.body-content-topspace{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 50%;
+  padding-top: 1px; 
+  margin-top: 25px; 
+}
+
 .page-1 {
-  background-image: url('../images/Page-1.jpg');
+  background-image: url('../images/Page1e.png');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
-  /* object-fit: cover;
+  object-fit: cover;
   max-width: 100%;
-  height: 100%; */
+  height: 100%;
 }
 
 .page-2 {
@@ -247,8 +291,11 @@
 }
 
 .start-Button {
+  position: absolute;
+  bottom: 20px;
   width: 200px;
   height: 50px;
+  background-color: turquoise;
   background-color: turquoise;
   border-radius: 5px;
   display: flex;
