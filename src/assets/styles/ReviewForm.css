@@ -66,14 +66,23 @@
   padding-top: 1px;  
 }
 
+.body-content-page4 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 75%;
+  padding-top: 1px; 
+  margin-top: 2px; 
+}
+
 
 .body-content-page5 {
   display: flex;
   justify-content: center;
   flex-direction: column;
   width: 75%;
-  padding-top: 1px; 
-  margin-top: 25px; 
+  padding-top:  ; 
+  margin-top: 5%; 
 }
 
 .body-content-page3 {

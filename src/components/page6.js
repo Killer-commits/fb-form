@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
   onlyWhite: {
     color: 'white',
+    marginTop : '10%',
   },
   container: {
     display: 'flex',
@@ -28,8 +29,10 @@ const useStyles = makeStyles((theme) => ({
   cssLabel: {
     color: 'white',
     "&$cssFocused": {
-      color: "white"
+      color: "gray"
     },
+    marginRight : '3%',
+    marginTop : '2%',
   },
 
 
@@ -43,7 +46,9 @@ const useStyles = makeStyles((theme) => ({
   cssFocused: {},
   notchedOutline: {
     borderWidth: '2px',
-    borderColor: 'white !important'
+    borderColor: 'white !important',
+    // padding: '20px',
+    margin : '-1%',
   },
 
 }));
@@ -94,7 +99,7 @@ const Page6 = ({ prevPage, nextPage }) => {
       )
   }
   return (
-    <div className='content-area page-5' >
+    <div className='content-area2 page-5' >
       <div className='body-content-page5 black-over'>
         <TextField
           label="What have you enjoyed the most as a Bhumi volunteer?"

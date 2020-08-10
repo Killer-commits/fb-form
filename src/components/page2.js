@@ -79,7 +79,9 @@ const useStyles = makeStyles((theme) => ({
         fill: 'white',
     },
 
+   
 }));
+const inputStyle = { WebkitBoxShadow: "0 0 0 1000px white inset" };
 
 const Page2 = ({ prevPage, nextPage }) => {
     const classes = useStyles();
@@ -134,6 +136,7 @@ const Page2 = ({ prevPage, nextPage }) => {
                 <TextField
                     label="Name"
                     id="outlined-size-normal"
+                    autocomplete="off"
                     defaultValue=""
                     value={fb.name}
                     onChange={(e) => setFb({ ...fb, name: e.target.value })}
@@ -160,6 +163,7 @@ const Page2 = ({ prevPage, nextPage }) => {
                 <TextField
                     label="Mobile Number"
                     id="outlined-size-normal"
+                    autoComplete='off'
                     defaultValue=""
                     value={fb.mobile}
                     type="number"
@@ -193,6 +197,7 @@ const Page2 = ({ prevPage, nextPage }) => {
                 <TextField
                     label="E-Mail"
                     id="outlined-size-normal"
+                    autoComplete='off'
                     defaultValue=""
                     value={fb.email}
                     onChange={(e) => setFb({ ...fb, email: e.target.value })}
@@ -285,25 +290,25 @@ const Page2 = ({ prevPage, nextPage }) => {
             </div>
             <div className='body-content'>
                 <Grid justify='space-between' container spacing={24}>
-                        <IconButton>
-                            <ArrowBackIcon style={{ fontSize: 60, color:'#333333' }} fontSize="large" onClick={prevPage} />
-                        </IconButton>
-                        <IconButton>
-                            <ArrowForwardIcon 
-                                style={{ fontSize: 60, color:'#333333' }}   
-                                onClick={   () => { 
-                                    console.log(fb); 
-                                    let val = ValidationTheFb()     
-                                    // let val = true
-                                    if (val === true) {
-                                        nextPage()
-                                    } else {
-                                        alert(val)
-                                    }
+                    <IconButton>
+                        <ArrowBackIcon style={{ fontSize: 60, color:'#333333' }} fontSize="large" onClick={prevPage} />
+                    </IconButton>
+                    <IconButton>
+                        <ArrowForwardIcon 
+                            style={{ fontSize: 60, color:'#333333' }}   
+                            onClick={   () => { 
+                                console.log(fb); 
+                                let val = ValidationTheFb()     
+                                // let val = true
+                                if (val === true) {
+                                    nextPage()
+                                } else {
+                                    alert(val)
+                                }
 
-                                 }} 
-                            />
-                        </IconButton>
+                                }} 
+                        />
+                    </IconButton>
                 </Grid>
             </div>
             
