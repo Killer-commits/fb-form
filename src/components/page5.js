@@ -155,9 +155,9 @@ const Page5 = ({ prevPage, nextPage }) => {
         // setFb({...fb , rating1, rating2,rating3,rating4,rating5})
     }
     return (
-        <div className='content-area2 page-5 ' >
+        <div className='content-area page-5 ' >
             {/* <h3 style={{ color: "black" }} > </h3>  */}
-            <div className='body-content-page3 black-over'>
+            <div className='body-content-page5 black-over-2'>
                 <Typography align="center"  className={classes.title}   variant="headline" component="h2">I think I</Typography>
                
                 <Typography  align="center" ml={3} className={classes.title}  variant="subheading" component="h4">Can dedicate more time to volunteer with Bhumi  </Typography>

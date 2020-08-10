@@ -111,8 +111,8 @@ const Page6 = ({ prevPage, nextPage }) => {
       )
   }
   return (
-    <div className='content-area2 page-5' >
-      <div className='body-content-page5 black-over'>
+    <div className='content-area2 page-6' >
+      <div className='body-content-page6 black-over'>
         <TextField
           label="What have you enjoyed the most as a Bhumi volunteer?"
           id="outlined-multiline-static"
@@ -220,7 +220,7 @@ const Page6 = ({ prevPage, nextPage }) => {
           }}
         />
        </div>
-      <div className='body-content-page5'>
+      <div className='body-content-page6'>
         <Grid justify='space-between' container spacing={24}>
           <IconButton>
             <ArrowBackIcon style={{ fontSize: 60, color: '#222222' }} onClick={prevPage} />
