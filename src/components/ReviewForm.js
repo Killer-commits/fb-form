@@ -13,7 +13,7 @@ import { useRecoilState } from 'recoil';
 import { loadingAtom } from './fbAtom';
 
 const ReviewForm = () => {
-	const [ currentPage  , setCurrentPage] = useState(2);
+	const [ currentPage  , setCurrentPage] = useState(1);
 	const [loading , setLoading] = useRecoilState(loadingAtom)
 	
 	return (
