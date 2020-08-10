@@ -1,65 +1,59 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import Page1 from './page1'
 import Page2 from './page2'
 import Page3 from './page3'
 import Page4 from './page4'
 import Page5 from './page5'
 // import Page6 from './page6'
+import Wait from './wait'
 import Page7 from './page7'
+import axios from 'axios'
 import '../assets/styles/ReviewForm.css'
+import { useRecoilState } from 'recoil';
+import { loadingAtom } from './fbAtom';
 
-class ReviewForm extends Component {
+const ReviewForm = () => {
+	const [ currentPage  , setCurrentPage] = useState(1);
+	const [loading , setLoading] = useRecoilState(loadingAtom)
+	
+	return (
+		<div className='app-div'>
+			<Wait show={loading} />
+			{
+				currentPage === 1 ?
+				<Page1 nextPage={() => setCurrentPage(2) }/> : null
+			}
+			{
+				currentPage === 2 ?
+					<Page2 prevPage={() => setCurrentPage(1)} nextPage={() => setCurrentPage(3) } /> : null
+			}
+			{
+				currentPage === 3 ?
+					<Page3 prevPage={() => setCurrentPage(2)} nextPage={() => setCurrentPage(4)} /> : null
+			}
+			{
+				currentPage === 4 ?
+					<Page4 prevPage={() => setCurrentPage(3)} nextPage={() => setCurrentPage(5)} /> : null
+			}
+			{
+				currentPage === 5 ?
+					<Page5 prevPage={() => setCurrentPage(4)} nextPage={() => setCurrentPage(6)} /> : null
+					
+			}
+			{
+				currentPage === 6 ?
+					<Page7/>  : null 
+					// <Page6 prevPage={() => this.setState({ currentPage: 5 })} nextPage={() => this.setState({ currentPage: 7 })} /> : null
 
-	state = { currentPage: 1	}
-
-	handleNext = () => {
-		const { currentPage } = this.state;
-		if (currentPage < 6) {
-			this.setState({ currentPage: currentPage + 1 })
-		}
-	}
-
-	render() {
-		const { currentPage } = this.state;
-
-		return (
-			<div className='app-div'>
-				
-                {
-					currentPage === 1 ?
-					<Page1 nextPage={() => this.setState({ currentPage: 2 })}/> : null
-				}
-				{
-					currentPage === 2 ?
-						<Page2 prevPage={() => this.setState({ currentPage: 1 })} nextPage={() => this.setState({ currentPage: 3 })} /> : null
-				}
-				{
-					currentPage === 3 ?
-                        <Page3 prevPage={() => this.setState({ currentPage: 2 })} nextPage={() => this.setState({ currentPage: 4 })} /> : null
-                }
-				{
-					currentPage === 4 ?
-						<Page4 prevPage={() => this.setState({ currentPage: 3 })} nextPage={() => this.setState({ currentPage: 5 })} /> : null
-				}
-				{
-					currentPage === 5 ?
-						<Page5 prevPage={() => this.setState({ currentPage: 4 })} nextPage={() => this.setState({ currentPage: 6 })} /> : null
-						
-				}
-				{
-					currentPage === 6 ?
-						<Page7/>  : null 
-						// <Page6 prevPage={() => this.setState({ currentPage: 5 })} nextPage={() => this.setState({ currentPage: 7 })} /> : null
-
-						
-				}
-				{
-					currentPage === 7 ?
-                    <Page7/>  : null 
-				}
-			</div>
-		)
-	}
+					
+			}
+			{
+				currentPage === 7 ?
+				<Page7/>  : null 
+			}
+		</div>
+	)
+	
 }
 
 export default ReviewForm;

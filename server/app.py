@@ -3,7 +3,6 @@ from sqlite3 import Error
 from flask import Flask, jsonify, request, send_file
 from flask_cors import CORS
 from datetime import datetime
-
 app = Flask(__name__)
 
 import gspread
@@ -72,6 +71,7 @@ def hello_world():
 @app.route('/api/post/form', methods=['POST'])
 def getUsers():
     try : 
+        print(request.json)
         name  = request.json["name"]
         mobile  = request.json["mobile"]
         email  = request.json["email"]

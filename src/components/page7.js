@@ -8,4 +8,4 @@ const Page7 = ({nextPage}) => {
     );
 }
 
-export default Page7
+export default Page7;

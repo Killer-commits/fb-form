@@ -66,6 +66,7 @@ const TextField = withStyles(styles)(function TextField({ classes, ...props }) {
 const Page6 = ({ prevPage, nextPage }) => {
     const classes = useStyles();
     const [fb, setFb] = useRecoilState(feedback);
+   
     return (
         <div className='content-area page-5' >
             <div className='body-content '>

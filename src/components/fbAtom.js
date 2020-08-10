@@ -27,3 +27,8 @@ export const feedback = atom({
         feedback:null,
     }
 })
+
+export const loadingAtom = atom({
+    key: 'loadingAtom',
+    default: false
+})
