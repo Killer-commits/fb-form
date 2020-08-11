@@ -152,7 +152,7 @@
 
 
 .page-2 {
-  content : '';
+  /* content : ''; */
 }
 .page-2::before {
   content:'';
@@ -169,7 +169,7 @@
 }
 
 .page-3 {
-  content : '';
+  /* content : ''; */
 }
 .page-3::before {
   background-repeat: no-repeat;
