@@ -216,7 +216,7 @@ const Page5 = ({ prevPage, nextPage }) => {
     // setFb({...fb , rating1, rating2,rating3,rating4,rating5})
   }
   return (
-    <div className='content-area2 page-5 ' >
+    <div className={fb.duration === '<0.3' ? 'content-area page-5' : 'content-area2 page-5'} >
       {fb.duration === '<0.3' ? null 
       : <div className='body-content-page5 black-over'>
         <Typography align="center" className={classes.title} variant="headline" component="h3">Indicate the ease of understanding the project flow (in terms of project’s vision, goals, timelines, syllabus, assessments for kids, content delivery, knowing the POCs) </Typography>

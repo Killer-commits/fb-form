@@ -174,7 +174,7 @@ const Page4 = ({ prevPage, nextPage}) => {
     return (
 
             
-        <div className='content-area2 page-4 ' >
+        <div className={fb.duration === '<0.3' ? 'content-area page-4' : 'content-area2 page-4'} >
             {fb.duration === '<0.3' ? null 
             :<div className='body-content-big-topspace black-over'>
                 <Typography  align="center"  className={classes.title}   variant="headline" component="h3">Did the leadership teams create enough opportunities for you to volunteer ? </Typography>

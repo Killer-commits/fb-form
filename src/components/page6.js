@@ -143,7 +143,7 @@ const Page6 = ({ prevPage, nextPage }) => {
       )
   }
   return (
-    <div className='content-area2 page-6' >
+    <div className={fb.duration === '<0.3' ? 'content-area page-6' : 'content-area2 page-6'} >
       {fb.duration === '<0.3' ? null  : <>
       <div className='body-content-page6 black-over'>
         <Typography   className={classes.title}   variant="headline" component="h3">What have you enjoyed the most as a Bhumi volunteer?</Typography>
