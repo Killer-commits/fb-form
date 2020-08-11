@@ -209,7 +209,8 @@ const Page6 = ({ prevPage, nextPage }) => {
       </>
       }
       <div className='body-content-page6 black-over'>
-          <Typography   className={classes.title}   variant="headline" component="h3">What could be improved to make your volunteering experience more enjoyable and fruitful (with respect to the organisation, the coordinators, the opportunities, your contributions etc )?</Typography>
+          <Typography   className={classes.title}   variant="headline" component="h3">What could be improved to make your volunteering experience more enjoyable and fruitful </Typography>
+          <Typography   className={classes.title}   variant="headline" component="h3">(with respect to the organisation, coordinators, opportunities, your contributions etc )?</Typography>
           <TextField
             label=""
             id="outlined-multiline-static"
