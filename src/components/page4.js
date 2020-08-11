@@ -161,7 +161,12 @@ const Page4 = ({ prevPage, nextPage}) => {
     const [rating7Hover, setRating7Hover] = useState(-1)
 
     const ValidationTheFb = () => {
-        if ((fb.rating6 === -1 ) || (fb.rating7 === -1 ) || (fb.classDuration === null ) || (fb.prepDuration === null ) || (fb.bondDuration === null ) || (fb.induction === null )  || (fb.induction === '' )){
+        // if  {
+        //     setFb( { ...fb, rating6 : 0 } )
+        //     setFb( { ...fb, rating7 : 0 } )
+        //     console.log("herer")
+        // }
+        if (((fb.rating6 === -1 ) && (fb.duration !== '<0.3' )) || ((fb.rating7 === -1 )  && (fb.duration !== '<0.3' )) || (fb.classDuration === null ) || (fb.prepDuration === null ) || (fb.bondDuration === null ) || (fb.induction === null )  || (fb.induction === '' )){
             return 'Please fill everything :-)'
         }
         return true
@@ -170,7 +175,8 @@ const Page4 = ({ prevPage, nextPage}) => {
 
             
         <div className='content-area2 page-4 ' >
-            <div className='body-content-big-topspace black-over'>
+            {fb.duration === '<0.3' ? null 
+            :<div className='body-content-big-topspace black-over'>
                 <Typography  align="center"  className={classes.title}   variant="headline" component="h3">Did the leadership teams create enough opportunities for you to volunteer ? </Typography>
             
                 <Typography  align="center" ml={3} className={classes.title}  variant="subheading" component="h4">On a project level </Typography>
@@ -231,6 +237,8 @@ const Page4 = ({ prevPage, nextPage}) => {
                         </Grid>
                     </Grid>
             </div>
+            
+            }
             <div className='body-content-big-topspace black-over'>
                 <Typography  align="center"  className={classes.title}   variant="headline" component="h3">How are your current volunteering hours split up, in a typical week?</Typography>
 

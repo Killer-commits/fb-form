@@ -89,7 +89,7 @@ const Page6 = ({ prevPage, nextPage }) => {
   const classes = useStyles();
   const [fb, setFb] = useRecoilState(feedback);
   const ValidationTheFb = () => {
-    if ( (fb.suggestions === null) || (fb.experience === null) || (fb.skillsAcquired === null)) {
+    if ( (fb.suggestions === null) || ((fb.experience === null)  && (fb.duration !== '<0.3' ))  || ((fb.skillsAcquired === null)  && (fb.duration !== '<0.3' )) ) {
       return 'Please write few words for the all questions :-)'
     }
     if ((fb.suggestions.length < 4) || (fb.experience.length < 4) || (fb.skillsAcquired.length < 4)) {
@@ -144,6 +144,7 @@ const Page6 = ({ prevPage, nextPage }) => {
   }
   return (
     <div className='content-area2 page-6' >
+      {fb.duration === '<0.3' ? null  : <>
       <div className='body-content-page6 black-over'>
         <Typography   className={classes.title}   variant="headline" component="h3">What have you enjoyed the most as a Bhumi volunteer?</Typography>
 
@@ -205,6 +206,8 @@ const Page6 = ({ prevPage, nextPage }) => {
             }}
           />
       </div>
+      </>
+      }
       <div className='body-content-page6 black-over'>
           <Typography   className={classes.title}   variant="headline" component="h3">What could be improved to make your volunteering experience more enjoyable and fruitful (with respect to the organisation, the coordinators, the opportunities, your contributions etc )?</Typography>
           <TextField

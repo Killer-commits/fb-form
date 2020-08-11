@@ -207,7 +207,7 @@ const Page5 = ({ prevPage, nextPage }) => {
   const [openProjectFlow, setOpenProjectFlow] = React.useState(false);
 
   const ValidationTheFb = () => {
-    if ((fb.rating8 === -1) || (fb.rating10 === -1) || (fb.rating11 === -1) || (fb.projectFlow === null) || (fb.projectFlow === '')) {
+    if ((fb.rating8 === -1) || ((fb.rating10 === -1)  && (fb.duration !== '<0.3' )) || (fb.rating11 === -1) || ((fb.projectFlow === null) && (fb.duration !== '<0.3' ))  || (fb.projectFlow === '')) {
       return 'Please fill everything :-)'
     }
     return true
@@ -217,7 +217,8 @@ const Page5 = ({ prevPage, nextPage }) => {
   }
   return (
     <div className='content-area2 page-5 ' >
-      <div className='body-content-page5 black-over'>
+      {fb.duration === '<0.3' ? null 
+      : <div className='body-content-page5 black-over'>
         <Typography align="center" className={classes.title} variant="headline" component="h3">Indicate the ease of understanding the project flow (in terms of project’s vision, goals, timelines, syllabus, assessments for kids, content delivery, knowing the POCs) </Typography>
 
         <FormControl className={classes.formControl}>
@@ -249,7 +250,9 @@ const Page5 = ({ prevPage, nextPage }) => {
           </Select>
         </FormControl>
       </div>
+      }
       {/* <h3 style={{ color: "black" }} > </h3>  */}
+      
       <div className='body-content-page5 black-over'>
         <Typography align="center" className={classes.title} variant="headline" component="h2">I think I</Typography>
 
@@ -281,8 +284,9 @@ const Page5 = ({ prevPage, nextPage }) => {
             {fb.rating8 !== null ? <Box className={classes.onlyWhite} >{labels[rating8Hover !== -1 ? rating8Hover : fb.rating8]}</Box> : <Box className={classes.onlyWhite}> Nothing Selected. </Box>}
           </Grid>
         </Grid>
-
-        <Typography align="center" ml={3} className={classes.title} variant="subheading" component="h4"> Understand the impact created through my volunteering work </Typography>
+        
+        {fb.duration === '<0.3' ? null 
+        : <> <Typography align="center" ml={3} className={classes.title} variant="subheading" component="h4"> Understand the impact created through my volunteering work </Typography>
         <Grid
           direction='column'
           justify="center" // Add it here :)
@@ -312,8 +316,8 @@ const Page5 = ({ prevPage, nextPage }) => {
             {fb.rating10 !== null && <Box className={classes.onlyWhite} ml={2}>{labels[rating10Hover !== -1 ? rating10Hover : fb.rating10]}</Box>}
           </Grid>
         </Grid>
-
-
+        </>
+        }
         <Typography align="center" ml={3} className={classes.title} variant="subheading" component="h4">Am content with the volunteer training sessions that are in place </Typography>
         <Grid
           direction='column'

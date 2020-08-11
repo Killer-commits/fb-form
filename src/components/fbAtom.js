@@ -24,11 +24,11 @@ export const feedback = atom({
 		rating11: -1,
 		rating12: -1,
 		induction: null,
-        projectFlow: null,
-        experience:null,
-        skillsAcquired:null,
-        suggestions:null,
-        feedback:null,
+        projectFlow: '__NE__',
+        experience:'__NE__',
+        skillsAcquired:'__NE__',
+        suggestions: null,
+        feedback:"__NA__",
     }
 })
 
