@@ -92,7 +92,7 @@ const Page6 = ({ prevPage, nextPage }) => {
     if ( (fb.suggestions === null) || ((fb.experience === null)  && (fb.duration !== '<0.3' ))  || ((fb.skillsAcquired === null)  && (fb.duration !== '<0.3' )) ) {
       return 'Please write few words for the all questions :-)'
     }
-    if ((fb.suggestions.length < 4) || (fb.experience.length < 4) || (fb.skillsAcquired.length < 4)) {
+    if ((fb.suggestions.length < 4)  || ((fb.experience.length < 4) && (fb.duration !== '<0.3' )) || ((fb.skillsAcquired.length < 4)&& (fb.duration !== '<0.3' )) ) {
       return 'Please write few words for the all questions :-)'
     }
     
