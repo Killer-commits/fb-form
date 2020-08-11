@@ -28,24 +28,24 @@ const useStyles = makeStyles((theme) => ({
         marginTop: theme.spacing(1),
     },
     onlyWhite:{
-        color: "white",
+        color: "black",
     },
 
     textField: {
         marginTop: theme.spacing(1),
-        color: "white",
+        color: "black",
     },
     title:{
         margin: theme.spacing(1),
-        color: "white",
+        color: "black",
     },
     whiteText:{
-        color: "white",
+        color: "black",
     },
     formControl: {
         margin: theme.spacing(1),
         minWidth: 120,
-        color: 'white',
+        color: 'black',
     },
     root: {
       '&:hover': {
@@ -54,15 +54,15 @@ const useStyles = makeStyles((theme) => ({
     },
     select: {
         '&:before': {
-            borderColor: 'white',
+            borderColor: 'black',
         },
         '&:after': {
-            borderColor: 'white',
+            borderColor: 'black',
         },
-        color: "white",
+        color: "black",
     },
     selectIcon: {
-        fill: 'white',
+        fill: 'black',
     },
     icon: {
       borderRadius: '50%',
@@ -120,10 +120,10 @@ const StyledRating = withStyles({
         color : '#333333'
     },
     iconFilled: {
-      color: '#ff6d75',
+      color: '#FF9529',
     },
     iconHover: {
-      color: '#ff3d47',
+      color: '#FDCC0D',
     },
   })(Rating);
 
@@ -132,10 +132,10 @@ const StyledRating = withStyles({
         color : '#333333'
     },
     iconFilled: {
-      color: '#FFDF00',
+      color: '#FF9529',
     },
     iconHover: {
-      color: '#FFDF00',
+      color: '#FDCC0D',
     },
   })(Rating);
 
@@ -186,7 +186,7 @@ const Page4 = ({ prevPage, nextPage}) => {
                             max={6}
                             name="rating6"
                             precision={1}
-                            icon={<StarIcon fontSize="large" color='white' />}
+                            icon={<StarIcon fontSize="large" color='black' />}
                             value={fb.rating6}
                             onChange={(event, newValue) => {
                                 // setRating6(newValue);
@@ -215,7 +215,7 @@ const Page4 = ({ prevPage, nextPage}) => {
                                 max={6}
                                 name="rating7"
                                 precision={1}
-                                icon={<StarIcon fontSize="large" color='white' />}
+                                icon={<StarIcon fontSize="large" color='black' />}
                                 value={fb.rating7}
                                 onChange={(event, newValue) => {
                                     // setRating7(newValue);

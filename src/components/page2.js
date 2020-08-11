@@ -21,20 +21,20 @@ const useStyles = makeStyles((theme) => ({
     },
     white: {
         margin: theme.spacing(2),
-        color: 'white',
+        color: 'black',
     },
     onlyWhite: {
-        color: 'white',
+        color: 'black',
     },
     onlyWhite1: {
-        color: 'white',
+        color: 'black',
         marginTop : "-15px"
     },
     formControl: {
         margin: theme.spacing(2),
         minWidth: 120,
         fontWeight: "bold",
-        color: "white"
+        color: "black"
     },
 
     title: {
@@ -49,9 +49,9 @@ const useStyles = makeStyles((theme) => ({
 
 
     cssLabel: {
-        color: 'white',
+        color: 'black',
         "&$cssFocused": {
-            color: "white"
+            color: "black"
         },
     },
 
@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
     cssOutlinedInput: {
         '&$cssFocused $notchedOutline': {
             // borderColor: `${theme.palette.primary.main} !important`,
-            borderColor: `white !important`,
+            borderColor: `black !important`,
         },
     },
 
@@ -67,20 +67,20 @@ const useStyles = makeStyles((theme) => ({
 
     notchedOutline: {
         borderWidth: '2px',
-        borderColor: 'white !important'
+        borderColor: 'black !important'
     },
 
     select: {
         '&:before': {
-            borderColor: 'white',
+            borderColor: 'black',
         },
         '&:after': {
-            borderColor: 'white',
+            borderColor: 'black',
         },
-        color: "white",
+        color: "black",
     },
     selectIcon: {
-        fill: 'white',
+        fill: 'black',
     },
 
    
@@ -292,7 +292,7 @@ const Page2 = ({ prevPage, nextPage }) => {
                 
 
             </div>
-            <div className='body-content'>
+            <div className='body-content '>
                 <Grid justify='space-between' container spacing={24}>
                     <IconButton>
                         <ArrowBackIcon style={{ fontSize: 40, color:'#333333' }} fontSize="large" onClick={prevPage} />

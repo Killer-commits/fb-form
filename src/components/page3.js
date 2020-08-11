@@ -25,16 +25,16 @@ const useStyles = makeStyles((theme) => ({
         marginTop: theme.spacing(2),
     },
     onlyWhite:{
-        color: "white",
+        color: "back",
     },
     title:{
         margin: theme.spacing(2),
-        color: "white",
+        color: "back",
     },
     formControl: {
         margin: theme.spacing(2),
         minWidth: 120,
-        color: 'white',
+        color: 'back',
         fontSize: '63px',
     },
     root: {
@@ -110,10 +110,10 @@ const useStyles = makeStyles((theme) => ({
         color : '#333333'
     },
     iconFilled: {
-      color: '#FFDF00',
+      color: '#FF9529',
     },
     iconHover: {
-      color: '#FFDF00',
+      color: '#FDCC0D',
     },
   })(Rating);
 
@@ -173,7 +173,7 @@ const Page3 = ({ prevPage, nextPage }) => {
                             max={6}
                             name="rating1"
                             precision={1}
-                            icon={<StarIcon fontSize="large" color='white' />}
+                            icon={<StarIcon fontSize="large" color='back' />}
                             value={fb.rating1}
                             onChange={(event, newValue) => {
                                 // setRating1(newValue);
@@ -265,7 +265,7 @@ const Page3 = ({ prevPage, nextPage }) => {
                             max={6}
                             name="rating4"
                             precision={1}
-                            icon={<StarIcon fontSize="large" color='white' />}
+                            icon={<StarIcon fontSize="large" color='back' />}
                             value={fb.rating4}
                             onChange={(event, newValue) => {
                                 // setRating4(newValue);
@@ -294,7 +294,7 @@ const Page3 = ({ prevPage, nextPage }) => {
                             max={6}
                             name="rating5"
                             precision={1}
-                            icon={<StarIcon fontSize="large" color='white' />}
+                            icon={<StarIcon fontSize="large" color='back' />}
                             value={fb.rating5}
                             onChange={(event, newValue) => {
                                 // setRating5(newValue);
@@ -310,10 +310,11 @@ const Page3 = ({ prevPage, nextPage }) => {
                         {fb.rating5 !== null && <Box className={classes.onlyWhite} >{labels[rating5Hover !== -1 ? rating5Hover : fb.rating5]}</Box>}
                     </Grid>
                 </Grid>
+                
             </div>
             
-            <div className='body-content-big '> 
-                <Grid justify='space-between' container spacing={24}>
+            <div className='body-content-big  '> 
+            <Grid justify='space-between' container spacing={12}>
                         <IconButton>
                             <ArrowBackIcon  style={{ fontSize: 40, color:'#333333' }} onClick={prevPage} />
                         </IconButton>

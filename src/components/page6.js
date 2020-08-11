@@ -13,42 +13,48 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import TextFieldMui from "@material-ui/core/TextField";
 import Button from '@material-ui/core/Button';
 import axios from 'axios'
+import Typography from '@material-ui/core/Typography';
+
 const useStyles = makeStyles((theme) => ({
   white: {
     margin: theme.spacing(2),
-    color: 'white',
+    color: 'black',
+  },
+  title : {
+    color : 'black',
+    marginLeft : '2%',
+    marginTop : '2%',
   },
   onlyWhite: {
-    color: 'white',
-    marginTop : '10%',
+    color: 'black',
   },
   container: {
     display: 'flex',
     flexWrap: 'wrap',
   },
   cssLabel: {
-    color: 'white',
+    color: 'black',
     "&$cssFocused": {
       color: "gray"
     },
-    marginRight : '3%',
-    marginTop : '2%',
+    // marginRight : '3%',
+    // marginTop : '2%',
   },
 
 
   cssOutlinedInput: {
     '&$cssFocused $notchedOutline': {
       // borderColor: `${theme.palette.primary.main} !important`,
-      borderColor: `white !important`,
+      borderColor: `black !important`,
     }
   },
 
   cssFocused: {},
   notchedOutline: {
     borderWidth: '2px',
-    borderColor: 'white !important',
+    borderColor: 'black !important',
     // padding: '20px',
-    margin : '-1%',
+    // margin : '-1%',
   },
 
 }));
@@ -63,7 +69,7 @@ const styles = {
     }),
     borderRadius: 3,
     border: 0,
-    color: 'white',
+    color: 'black',
     height: 48,
     padding: '0 30px',
     boxShadow: styledBy('color', {
@@ -139,8 +145,10 @@ const Page6 = ({ prevPage, nextPage }) => {
   return (
     <div className='content-area2 page-6' >
       <div className='body-content-page6 black-over'>
+        <Typography   className={classes.title}   variant="headline" component="h3">What have you enjoyed the most as a Bhumi volunteer?</Typography>
+
         <TextField
-          label="What have you enjoyed the most as a Bhumi volunteer?"
+          label=""
           id="outlined-multiline-static"
           defaultValue=""
           value={fb.experience}
@@ -166,86 +174,67 @@ const Page6 = ({ prevPage, nextPage }) => {
             className: classes.onlyWhite
           }}
         />
-        <TextField
-          label="Mention any 2 skills acquired/honed during your volunteering journey?"
-          id="outlined-multiline-static"
-          defaultValue=""
-          value={fb.skillsAcquired}
-          onChange={(e) => setFb({ ...fb, skillsAcquired: e.target.value })}
-          placeholder='Enter here'
-          variant="outlined"
-          className={classes.white}
-          rows={4}
-          multiline
-          InputLabelProps={{
-            classes: {
-              root: classes.cssLabel,
-              focused: classes.cssFocused,
-            },
-          }}
-          InputProps={{
-            classes: {
-              root: classes.cssOutlinedInput,
-              focused: classes.cssFocused,
-              notchedOutline: classes.notchedOutline,
-            },
-            className: classes.onlyWhite
-          }}
-        />
+      </div>
+      <div className='body-content-page6 black-over'>
+          <Typography   className={classes.title}   variant="headline" component="h3">Mention any 2 skills acquired/honed during your volunteering journey?</Typography>
 
-        <TextField
-          label="What could be improved to make your volunteering experience more enjoyable and fruitful?"
-          id="outlined-multiline-static"
-          defaultValue=""
-          value={fb.suggestions}
-          onChange={(e) => setFb({ ...fb, suggestions: e.target.value })}
-          placeholder='Enter here'
-          variant="outlined"
-          className={classes.white}
-          rows={4}
-          multiline
-          InputLabelProps={{
-            classes: {
-              root: classes.cssLabel,
-              focused: classes.cssFocused,
-            },
-          }}
-          InputProps={{
-            classes: {
-              root: classes.cssOutlinedInput,
-              focused: classes.cssFocused,
-              notchedOutline: classes.notchedOutline,
-            },
-            className: classes.onlyWhite
-          }}
-        />
-        <TextField
-          label="Is there anything else you would like us to know about?"
-          id="outlined-multiline-static"
-          defaultValue=""
-          value={fb.feedback}
-          onChange={(e) => setFb({ ...fb, feedback: e.target.value })}
-          placeholder='Enter here'
-          variant="outlined"
-          className={classes.white}
-          rows={4}
-          multiline
-          InputLabelProps={{
-            classes: {
-              root: classes.cssLabel,
-              focused: classes.cssFocused,
-            },
-          }}
-          InputProps={{
-            classes: {
-              root: classes.cssOutlinedInput,
-              focused: classes.cssFocused,
-              notchedOutline: classes.notchedOutline,
-            },
-            className: classes.onlyWhite
-          }}
-        />
-       </div>
+          <TextField
+            label=""
+            id="outlined-multiline-static"
+            defaultValue=""
+            value={fb.skillsAcquired}
+            onChange={(e) => setFb({ ...fb, skillsAcquired: e.target.value })}
+            placeholder='Enter here'
+            variant="outlined"
+            className={classes.white}
+            rows={4}
+            multiline
+            InputLabelProps={{
+              classes: {
+                root: classes.cssLabel,
+                focused: classes.cssFocused,
+              },
+            }}
+            InputProps={{
+              classes: {
+                root: classes.cssOutlinedInput,
+                focused: classes.cssFocused,
+                notchedOutline: classes.notchedOutline,
+              },
+              className: classes.onlyWhite
+            }}
+          />
+      </div>
+      <div className='body-content-page6 black-over'>
+          <Typography   className={classes.title}   variant="headline" component="h3">Mention any 2 skills acquired/honed during your volunteering journey?</Typography>
+
+          <TextField
+            label="What could be improved to make your volunteering experience more enjoyable and fruitful?"
+            id="outlined-multiline-static"
+            defaultValue=""
+            value={fb.suggestions}
+            onChange={(e) => setFb({ ...fb, suggestions: e.target.value })}
+            placeholder='Enter here'
+            variant="outlined"
+            className={classes.white}
+            rows={4}
+            multiline
+            InputLabelProps={{
+              classes: {
+                root: classes.cssLabel,
+                focused: classes.cssFocused,
+              },
+            }}
+            InputProps={{
+              classes: {
+                root: classes.cssOutlinedInput,
+                focused: classes.cssFocused,
+                notchedOutline: classes.notchedOutline,
+              },
+              className: classes.onlyWhite
+            }}
+          />
+      </div>
       <div className='body-content-page6'>
         <Grid justify='space-between' container spacing={24}>
           <IconButton>

@@ -27,16 +27,16 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(2),
   },
   onlyWhite: {
-    color: "white",
+    color: "black",
   },
   title: {
     margin: theme.spacing(2),
-    color: "white",
+    color: "black",
   },
   formControl: {
     margin: theme.spacing(2),
     minWidth: 120,
-    color: 'white',
+    color: 'black',
     fontSize: '63px',
   },
   root: {
@@ -78,12 +78,12 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   whiteText: {
-    color: "white",
+    color: "black",
   },
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,
-    color: 'white',
+    color: 'black',
   },
   root: {
     '&:hover': {
@@ -92,15 +92,15 @@ const useStyles = makeStyles((theme) => ({
   },
   select: {
     '&:before': {
-      borderColor: 'white',
+      borderColor: 'black',
     },
     '&:after': {
-      borderColor: 'white',
+      borderColor: 'black',
     },
-    color: "white",
+    color: "black",
   },
   selectIcon: {
-    fill: 'white',
+    fill: 'black',
   },
   icon: {
     borderRadius: '50%',
@@ -266,7 +266,7 @@ const Page5 = ({ prevPage, nextPage }) => {
               max={6}
               name="rating8"
               precision={1}
-              icon={<FavoriteIcon fontSize="large" color='white' />}
+              icon={<FavoriteIcon fontSize="large" color='black' />}
               value={fb.rating8}
               onChange={(event, newValue) => {
                 // setRating1(newValue);
@@ -295,7 +295,7 @@ const Page5 = ({ prevPage, nextPage }) => {
               max={6}
               name="rating10"
               precision={1}
-              icon={<FavoriteIcon fontSize="large" color='white' />}
+              icon={<FavoriteIcon fontSize="large" color='black' />}
               value={fb.rating10}
               onChange={(event, newValue) => {
                 // setRating3(newValue);
@@ -327,7 +327,7 @@ const Page5 = ({ prevPage, nextPage }) => {
               max={6}
               name="rating11"
               precision={1}
-              icon={<FavoriteIcon fontSize="large" color='white' />}
+              icon={<FavoriteIcon fontSize="large" color='black' />}
               value={fb.rating11}
               onChange={(event, newValue) => {
                 // setRating4(newValue);
