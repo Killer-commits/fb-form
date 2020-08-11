@@ -25,6 +25,10 @@ const useStyles = makeStyles((theme) => ({
     marginLeft : '2%',
     marginTop : '2%',
   },
+  title2 : {
+    color : 'black',
+    marginLeft : '2%',
+  },
   onlyWhite: {
     color: 'black',
   },
@@ -66,15 +70,18 @@ const styles = {
     background: styledBy('color', {
       default: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
       blue: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
+      white:'linear-gradient(45deg, #DDDDDD 30%, #FFFFFF 90%)'
     }),
     borderRadius: 3,
     border: 0,
     color: 'black',
+    fontWeight:'bold',
     height: 48,
     padding: '0 30px',
     boxShadow: styledBy('color', {
       default: '0 3px 5px 2px rgba(255, 105, 135, .3)',
       blue: '0 3px 5px 2px rgba(33, 203, 243, .3)',
+      // white:'0 3px 5px 2px #FFFFFF'
     }),
   },
 };
@@ -209,8 +216,8 @@ const Page6 = ({ prevPage, nextPage }) => {
       </>
       }
       <div className='body-content-page6 black-over'>
-          <Typography   className={classes.title}   variant="headline" component="h3">What could be improved to make your volunteering experience more enjoyable and fruitful </Typography>
-          <Typography   className={classes.title}   variant="headline" component="h3">(with respect to the organisation, coordinators, opportunities, your contributions etc )?</Typography>
+          <Typography   className={classes.title}   variant="headline" component="h3">What could be improved to make your volunteering experience more enjoyable and fruitful? </Typography>
+          <Typography   className={classes.title2}   variant="headline" component="h3">(with respect to the organisation, coordinators, opportunities, your contributions etc )</Typography>
           <TextField
             label=""
             id="outlined-multiline-static"
@@ -245,7 +252,7 @@ const Page6 = ({ prevPage, nextPage }) => {
           </IconButton>
           <StyledButton 
               size="large" 
-              color={'blue'}
+              color={'white'}
               onClick={() => {
                 console.log(fb);
                 let val = ValidationTheFb()

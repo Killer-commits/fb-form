@@ -220,7 +220,7 @@ const Page3 = ({ prevPage, nextPage }) => {
                 </Grid>
                     
                 
-                <Typography align="center" ml={3} className={classes.title}  variant="subheading" component="h4"> Creating a positive volunteering environment (appreciation, feedback sessions, volunteer meetups</Typography>
+                <Typography align="center" ml={3} className={classes.title}  variant="subheading" component="h4"> Creating a positive volunteering environment (appreciation, feedback sessions, volunteer meetups)</Typography>
                 <Grid
                    direction='column'
                    justify="center" // Add it here :)
