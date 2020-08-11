@@ -153,30 +153,31 @@
 
 .page-2 {
   /* content : ''; */
-}
-.page-2::before {
-  content:'';
   background-image: url('../images/page-2.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+}
+/* .page-2::before {
+  content:'';
   opacity: 1;
   position: absolute;
   top: 0px;
   right: 0px;
   bottom: 0px;
   left: 0px;
-}
+} */
 
 .page-3 {
-  /* content : ''; */
-}
-.page-3::before {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
   background-color: #8497b0;
   background-image: url('../images/page-3.png');
+  /* content : ''; */
+}
+/* .page-3::before {
+
   content : '';
   opacity: 1;
   position: absolute;
@@ -184,7 +185,7 @@
   right: 0px;
   bottom: 0px;
   left: 0px;
-}
+} */
 .page-4 {
   background-image: url('../images/page-4.jpg');
   background-repeat: no-repeat;

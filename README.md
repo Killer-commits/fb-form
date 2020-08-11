@@ -1,5 +1,18 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+1. Image transoaranse
+2. all font euqal size and font type 
+2. Which project are you a part of ?x
+2. 1 - 2 years x 
+
+
+4. Indicate the statement that best describes your state as a volunteer post induction 
+
+5.) REmote anythnong need 
+
+6. Change opcity = less 
+
+7.) less than 3 month qusetioners
 ## Available Scripts
 
 In the project directory, you can run:
