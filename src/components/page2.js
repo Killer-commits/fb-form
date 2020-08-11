@@ -134,14 +134,16 @@ const Page2 = ({ prevPage, nextPage }) => {
 
         return true
     }
-    const handleDuration = (e) => {
-        if (e.target.value === '<0.3') {
+
+    React.useEffect(() => {
+        if (fb.duration === '<0.3') {
             setFb({ ...fb, projectFlow: '__NE__', experience:'__NE__', skillsAcquired:'__NE__',})
+            console.log("FU")
         } else {
             setFb({ ...fb, projectFlow: null , experience:null, skillsAcquired:null,})
         }
-        setFb({ ...fb, duration: e.target.value })
-    }
+      }, [fb.duration]);
+
     return (
         <div className='content-area page-2' >
             <div className='body-content black-over' >
@@ -246,7 +248,7 @@ const Page2 = ({ prevPage, nextPage }) => {
                         onClose={() => setopenDuration(false)}
                         onOpen={() => setopenDuration(true)}
                         value={fb.duration}
-                        onChange={(e) => handleDuration(e)}
+                        onChange={(e) => setFb({ ...fb, duration: e.target.value }) }
                         className={classes.select}
                         inputProps={{
                             classes: {
