@@ -252,13 +252,13 @@ const Page2 = ({ prevPage, nextPage }) => {
                         <MenuItem value={'<0.3'}> &lt;3 months</MenuItem>
                         <MenuItem value={'>0.3 - 0.6'}>3 - 6 months</MenuItem>
                         <MenuItem value={'>0.6 - 1'}>6 months - 1 year</MenuItem>
-                        <MenuItem value={'1 - 2'}>1 - 2 year</MenuItem>
+                        <MenuItem value={'1 - 2'}>1 - 2 years</MenuItem>
                         <MenuItem value={'>2'}>>2 years</MenuItem>
                     </Select>
                 </FormControl>
 
                 <FormControl  className={classes.formControl}>
-                    <InputLabel className={classes.onlyWhite} id="demo-controlled-open-select-label">Which project are you part of ?</InputLabel>
+                    <InputLabel className={classes.onlyWhite} id="demo-controlled-open-select-label">Which project are you a part of ?</InputLabel>
                     <Select
                         labelId="demo-controlled-open-select-label"
                         id="demo-controlled-open-select"

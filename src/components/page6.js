@@ -89,10 +89,10 @@ const Page6 = ({ prevPage, nextPage }) => {
   const classes = useStyles();
   const [fb, setFb] = useRecoilState(feedback);
   const ValidationTheFb = () => {
-    if ((fb.feedback === null) || (fb.suggestions === null) || (fb.experience === null) || (fb.skillsAcquired === null)) {
+    if ( (fb.suggestions === null) || (fb.experience === null) || (fb.skillsAcquired === null)) {
       return 'Please write few words for the all questions :-)'
     }
-    if ((fb.feedback.length < 4) || (fb.suggestions.length < 4) || (fb.experience.length < 4) || (fb.skillsAcquired.length < 4)) {
+    if ((fb.suggestions.length < 4) || (fb.experience.length < 4) || (fb.skillsAcquired.length < 4)) {
       return 'Please write few words for the all questions :-)'
     }
     
@@ -206,10 +206,9 @@ const Page6 = ({ prevPage, nextPage }) => {
           />
       </div>
       <div className='body-content-page6 black-over'>
-          <Typography   className={classes.title}   variant="headline" component="h3">Mention any 2 skills acquired/honed during your volunteering journey?</Typography>
-
+          <Typography   className={classes.title}   variant="headline" component="h3">What could be improved to make your volunteering experience more enjoyable and fruitful (with respect to the organisation, the coordinators, the opportunities, your contributions etc )?</Typography>
           <TextField
-            label="What could be improved to make your volunteering experience more enjoyable and fruitful?"
+            label=""
             id="outlined-multiline-static"
             defaultValue=""
             value={fb.suggestions}

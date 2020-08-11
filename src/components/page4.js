@@ -323,7 +323,7 @@ const Page4 = ({ prevPage, nextPage}) => {
                 </FormControl>
             </div>            
             <div className='body-content-big-topspace black-over'>
-                <Typography  align="center" className={classes.title}   variant="headline" component="h3">Indicate the statement that best describes your state post induction as a volunteer?</Typography>
+                <Typography  align="center" className={classes.title}   variant="headline" component="h3"> Indicate the statement that best describes your state as a volunteer post induction</Typography>
 
                 <FormControl className={classes.formControl}>
                         <InputLabel className={classes.whiteText} id="demo-controlled-open-select-label">Select for options here</InputLabel>
@@ -347,7 +347,6 @@ const Page4 = ({ prevPage, nextPage}) => {
                                 <em>None</em>
                             </MenuItem> */}
                             <MenuItem value={'Less Involved'}> Less Involved </MenuItem>
-                            <MenuItem value={'More involved'}> More involved </MenuItem>
                             <MenuItem value={'Involved in domains of your expertise'}> Involved in domains of your expertise </MenuItem>
                             <MenuItem value={'Involved in different domains '}> Involved in different domains </MenuItem>
                             
