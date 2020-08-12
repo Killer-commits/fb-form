@@ -36,3 +36,8 @@ export const loadingAtom = atom({
     key: 'loadingAtom',
     default: false
 })
+
+export const dykAtom = atom({
+    key: 'NO',
+    default: false
+})
