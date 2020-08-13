@@ -176,7 +176,7 @@ const Page3 = ({ prevPage, nextPage }) => {
         <div className={dyk === "YES" ? 'content-area2 page-3 ' : 'content-area page-3 '} >
             {/* <h3 style={{ color: "black" }} > </h3>  */}
             <div className='body-content-page3 black-over'>
-                <Typography align="center" className={classes.title} variant="headline" component="h2"> Do you know your project lead coordinators ?. </Typography>
+                <Typography align="center" className={classes.title} variant="headline" component="h2"> Do you know the lead coordinators of your project? </Typography>
                 <Grid
                     direction='column'
                     justify="center" // Add it here :)
